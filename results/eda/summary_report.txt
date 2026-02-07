@@ -1,0 +1,44 @@
+NASA Milling Dataset - EDA Summary Report
+==================================================
+
+Total runs: 167
+Runs with VB: 146
+Cases: 16
+VB range: 0.000 - 1.530 mm
+VB mean +/- std: 0.338 +/- 0.261 mm
+DOC values: [0.75, 1.5]
+Feed values: [0.25, 0.5]
+Materials: [1, 2]
+
+Feature Correlations with VB (sorted by |r|)
+--------------------------------------------------
+  vib_spindle_kurtosis                 r = +0.3823
+  smcAC_kurtosis                       r = -0.0839
+  smcDC_mean                           r = +0.0824
+  AE_spindle_std                       r = -0.0824
+  smcDC_fft_energy                     r = -0.0824
+  smcAC_rms                            r = -0.0824
+  vib_table_fft_energy                 r = -0.0824
+  AE_spindle_mean                      r = +0.0824
+  smcDC_std                            r = -0.0824
+  AE_spindle_fft_energy                r = -0.0824
+  AE_table_mean                        r = +0.0824
+  AE_spindle_rms                       r = -0.0824
+  vib_spindle_mean                     r = -0.0824
+  smcAC_fft_energy                     r = -0.0824
+  vib_spindle_fft_energy               r = -0.0824
+  vib_table_rms                        r = -0.0824
+  AE_table_rms                         r = -0.0824
+  AE_table_std                         r = -0.0824
+  vib_table_std                        r = -0.0824
+  vib_table_mean                       r = -0.0824
+  smcAC_std                            r = -0.0824
+  vib_spindle_rms                      r = -0.0824
+  smcDC_rms                            r = -0.0824
+  AE_table_fft_energy                  r = -0.0824
+  vib_spindle_std                      r = -0.0824
+  smcAC_mean                           r = -0.0824
+  AE_table_kurtosis                    r = -0.0788
+  vib_table_kurtosis                   r = -0.0557
+  AE_spindle_kurtosis                  r = +0.0403
+  smcDC_kurtosis                       r = -0.0353

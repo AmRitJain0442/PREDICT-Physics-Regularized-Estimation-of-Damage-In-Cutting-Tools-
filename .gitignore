@@ -35,14 +35,6 @@ data/
 *.h5
 *.hdf5
 
-# Results and outputs
-results/
-*.png
-*.jpg
-*.jpeg
-*.pdf
-*.pkl
-*.joblib
 
 
 # Jupyter Notebook
