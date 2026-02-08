@@ -1,0 +1,22 @@
+Model Interpretation Summary
+=======================================================
+
+SHAP Feature Importance (Top 10):
+  vib_table_m4_center_freq                       |SHAP| = 0.0467
+  AE_spindle_m3_center_freq                      |SHAP| = 0.0217
+  vib_table_m4_fft_peak_freq                     |SHAP| = 0.0192
+  vib_spindle_m5_kurtosis                        |SHAP| = 0.0190
+  AE_table_m4_center_freq                        |SHAP| = 0.0168
+  smcDC_m5_entropy                               |SHAP| = 0.0156
+  vib_table_m3_center_freq                       |SHAP| = 0.0154
+  vib_spindle_m3_skewness                        |SHAP| = 0.0151
+  smcAC_m5_fft_peak_freq                         |SHAP| = 0.0146
+  smcAC_m3_center_freq                           |SHAP| = 0.0142
+
+Ablation Study (LOCO-CV):
+Config                    Features     RMSE       R2
+-------------------------------------------------------
+Raw Features Only               66   0.1910   0.4564
+All VMD Features               390   0.1981   0.4152
+Raw + VMD Combined             456   0.1946   0.4354
+Selected VMD (Ours)             29   0.2063   0.3655
