@@ -1,0 +1,1476 @@
+        Creation of Publicly Available Data Sets for Prognostics and
+        Diagnostics Addressing Data Scenarios Relevant to Industrial
+                               Applications
+                                         Simon Hagmeyer1, Fabian Mauthe2 and Peter Zeiler3
+                                   1,2,3Esslingen University of Applied Sciences, Goeppingen, 73037, Germany
+
+                                                         simon.hagmeyer@hs-esslingen.de
+                                                          fabian.mauthe@hs-esslingen.de
+                                                            peter.zeiler@hs-esslingen.de
+
+
+
+                              ABSTRACT                                       involved, as well as the filter media and test dusts employed.
+                                                                             Typical run-to-failure trajectories are illustrated. Thereafter,
+For a successful realization of prognostics and health
+                                                                             the data set published under the name Preventive to
+management (PHM), the availability of sufficient run-to-
+                                                                             Predictive Maintenance is presented. Additionally, a
+failure data sets is a crucial factor. The sheer number of given
+                                                                             schedule for future releases of data sets on further industry-
+data points holds less importance than the full coverage of the
+                                                                             relevant data scenarios is sketched.
+potential state space. However, full coverage is a major
+challenge in most industrial applications. Among other
+                                                                             1. INTRODUCTION
+things, high investment and operating costs as well as the
+long service life of many technical systems make it difficult                Key tasks in PHM are the detection of faults, the diagnosis of
+to acquire complete run-to-failure data sets. Consequently, in               which component in a system causes the current fault
+industrial applications data sets with specific deficiencies are             condition, the health assessment, and the prognosis of the
+frequently encountered. The development of appropriate                       remaining useful life (RUL). The health information acquired
+methods to address such data scenarios is a fundamental                      accordingly serves as a foundation for the health
+research issue. Therefore, the purpose of this paper is to                   management. Approaches to address the prognosis and
+provide facilitation for this research. Accordingly, the paper               diagnosis are often divided into data-driven methods, model-
+starts by specifying the value and availability of data in PHM.              based methods, and hybrid methods (Atamuradov, Medjaher,
+Subsequently, criteria for characterizing data sets are defined              Dersin, Lamoureux, & Zerhouni, 2017).
+independent of the actual PHM application. The criteria are
+used to identify typical data scenarios with specific                        Each approach requires or at least benefits from the
+                                                                             availability of sufficient data. Data-driven methods originate
+deficiencies that possess significant relevance for industrial
+                                                                             from the domains of statistics and machine learning (ML).
+applications. Thereafter, the most comprehensive overview
+                                                                             The fundamental characteristic of these methods is that the
+of data sets suitable for PHM and currently publicly
+                                                                             modeling of system behavior is done entirely mathematically
+accessible is provided. Thereby, not all previously identified
+data scenarios with their specific deficiencies are addressed                or rather statistically. Structural understanding of the
+by at least one data set. A program is established for the                   behavior being modeled is not acquired. In order to use data-
+                                                                             driven methods in a purposeful way, all relevant areas of the
+aforementioned facilitation of further research. One objective
+                                                                             state space should be reasonably covered by available data
+of the program is to create data sets reflecting these data
+                                                                             (Javed, Gouriveau, & Zerhouni, 2017). This involves at least
+scenarios using a test bench. First, possible applications and
+                                                                             that several run-to-failure data are available for each fault
+their degradation processes to be studied on the test bench are
+briefly characterized. Thereby, the final decision to select                 mode of the system (Uckun, Goebel, & Lucas, 2008).
+filtration as a test bench application is argued. Subsequently,              Depending on the application, different levels of production
+                                                                             quality, operating conditions, and other additional aspects
+the test bench created is introduced, including a description
+                                                                             also hold importance.
+of the functional concept, pneumatic layout and components
+_____________________                                                        Much more than data-driven methods, (physical) model-
+Simon Hagmeyer et al. This is an open-access article distributed under the   based methods require a thorough understanding of the
+terms of the Creative Commons Attribution 3.0 United States License, which   mechanism involved in the degradation process. Even if
+permits unrestricted use, distribution, and reproduction in any medium,
+provided the original author and source are credited.
+                                                                             theoretically no data is required for the creation of such a
+https://doi.org/10.36001/IJPHM.2021.v12i2.3087
+
+International Journal of Prognostics and Health Management, ISSN 2153-2648, 2021                                                           1
+                                INTERNATIONAL JOURNAL OF PROGNOSTICS AND HEALTH MANAGEMENT
+
+
+
+physical model, it can be essential for a model-based              Pedersen, Nadimi, and Herp (2020). However, a general
+approach when it comes to actually applying PHM. First,            categorization of data scenarios detached from the particular
+insufficiently precise known parameter values of a physical        application is missing. Furthermore, such data scenarios are
+model can be reduced to a narrower range by means of data          only partially and rather coincidentally represented by
+(An, Choi, & Kim, 2013). Second, the basis of scientific work      publicly available data sets. Consequently, there is also a lack
+is to assess whether a theory or model can be disproven by         of individual data sets that specifically reflect the data
+the data obtained from experiments (Popper, 1963). Testing         scenarios.
+based on concrete process data assists in identifying
+                                                                   The main purpose of this paper is to contribute to the research
+conditions that have hitherto been insufficiently modeled.
+                                                                   on addressing PHM-specific data scenarios in industrial
+Hybrid methods – which stem from the combination of data-
+                                                                   applications. Therefore, criteria for the assessment of data
+driven and physical models – accordingly also require the
+                                                                   sets are defined in section 2. Based on these criteria, typical
+availability of data. Thus, for each of the approaches,
+                                                                   data scenarios with strong relevance to industrial applications
+plentiful data is required.
+                                                                   are identified in section 3. Subsequently, the most
+However, one major drawback of PHM is that the objective           comprehensive overview of publicly available data sets that
+of extensive data usually implies immense effort in terms of       are suitable for PHM research thus far is given in section 4.
+cost and time. Data of the assessed system in good condition       Here, some data sets are identified to represent specific data
+is often plentiful available, but simply having several            scenarios. Nonetheless, given that not all data scenarios with
+seamless run-to-failure data sets for each fault mode usually      strong relevance are represented by these publicly available
+corresponds to a practically impossible amount of effort           data sets, a program is established to provide data sets for all
+(Hemmer, Klausen, van Khang, Robbersmyr, & Waag, 2019;             relevant scenarios. The data is generated by means of a
+Pillai, Kaushik, Bhavikatti, Roy, & Kumar, 2016). Therefore,       filtration test bench, which is introduced in section 5, along
+when PHM is applied in industrial domains, data scenarios          with the first data set already generated. Additionally, future
+are encountered that do not comply with ideal conditions.          releases of further data sets on other data scenarios are
+Instead, the available data often contains deficiencies that       sketched. The paper ends in section 6 with conclusions on the
+cannot be eliminated. For example, this could be missing           content and an outlook. Overall, the paper aims to provide:
+parts within the life cycle recording, caused by a failure of
+the measurement system or the data handling. There could           x   Criteria for the qualitative assessment of PHM data sets
+also be records on the beginning of the life cycle missing due     x   The most comprehensive overview on publicly available
+to retrofitting of sensors. Another typical case is records that       PHM data sets thus far
+do not extend to the point of failure. There are a variety of      x   Publicly available data sets relevant for industrial
+reasons for this, such as premature replacement due to                 applications
+preventive maintenance, a very long life of a highly reliable
+                                                                   x   A foundation for further research on developing or
+system or not being able to operate the system up to its failure
+                                                                       adapting PHM methods to specific data scenarios
+point due to the resultant harm (Chao, Kulkarni, Goebel, &
+Fink, 2021). Thus, examinations of such deficiencies and data
+scenarios are performed within this paper.                         2. DEFINITION OF CRITERIA FOR AN ASSESSMENT OF
+                                                                       DATA SETS
+For PHM, there are various methodologies, functional
+architectures, and frameworks that describe how to apply           As stated in the previous section, having data available is an
+PHM. This often involves trying to distinguish the most            integral part of implementing PHM. Thereby, a distinction
+promising approach for an application, whether it is data-         can be made between four essential tasks relating to the
+driven, model-based, hybrid, or classical reliability              condition of a technical system, which serve as the basis for
+engineering. There are also many architectural schemes for         health management. The following categorization of the four
+integrating PHM into data processing of a manufacturing            tasks is based on Jia, Huang, Feng, Cai, and Lee (2018):
+plant, vehicle, or building, for instance. Representative          x   Fault detection/anomaly detection: Detect a fault
+examples and reviews can be found in Aizpurua and                      state/anomaly of a technical system without knowing the
+Catterson (2015), Elattar, Elminir, and Riad (2016), Aizpurua          root cause. This results in a binary classification problem
+and Catterson (2016), and Atamuradov, Medjaher, Dersin,                with the states fault or no fault.
+Lamoureux, and Zerhouni (2017). Thus far, these
+                                                                   x   Diagnosis: Assign one or more causes to a detected fault
+frameworks and other types of guidance do not account for
+                                                                       state.
+the deficiencies and their data scenarios mentioned before.
+                                                                   x   Health assessment: Assess the state of health or the
+In PHM research, there are already several papers that focus           current risk of failure of a system based on its current
+on developing suitable methods specifically for a particular           condition.
+data scenario; for example, Xu, Baraldi, Al-Dahidi, and Zio
+(2019), Cannarile, Baraldi, and Zio (2019), and Wiese,             x   Prognosis: Predict the future state of health or RUL.
+
+
+
+                                                                                                                                 2
+                                 INTERNATIONAL JOURNAL OF PROGNOSTICS AND HEALTH MANAGEMENT
+
+
+
+    1. History provided by the data             2. Data acquisition                       3. Data on degradation
+    1.1 Data history range                      2.1 Recording                             3.1 Data on
+         - Run-to-failure/threshold                 - Continuous                               - Parameters affecting the
+         - End of life not recorded                 - Periodic, equidistant                        degradation
+         - Start during life cycle                  - Random                                   - Health indicators
+         - No history, only a current               - Condition-dependent                 3.2 Information on degradation
+              status                            2.2 Measurement properties                3.3 Prior knowledge on:
+    1.2 System with maintenance                     - Sampling rate                            - Degradation features
+    1.3 Lifetime criterion specified                - Time information                         - Degradation process
+                                                         x Total operating time           3.4 Reproducibility of the data
+                                                         x Number of the current
+                                                             record without absolute
+                                                             time indication
+    4. System information                       5. Quality & quantity of data             6. Data source
+    4.1 Operating condition                     5.1 Coverage of state space               6.1 Source
+         - Constant                                 - Relevant state space                     - Simulation
+         - Deterministic                                 x Complete/partial                    - Laboratory experiments
+         - Stochastic                               - Extended state space                         x Accelerated/not
+    4.2 Failure modes of the system             5.2 Data volume                                       accelerated
+         - Number from failure modes                - Total number of data                     - Real application
+         - Number of components                     - Number of data per state                     x Selected test specimen
+    4.3 Motivation for PHM adoption             5.3 Data quality                                   x Random test specimen
+         - Safety                                   - Systematic measurement
+         - Availability                                  error/bias
+         - Profitability                            - Random measurement
+    4.4 Redundancy exists, what kind                     errors/noise
+                        Table 1. Collection of criteria for the qualitative assessment of data sets at PHM.
+Which of the four tasks is to be performed, as well as what             and lifetime criterion. The sub-criterion of data history
+characteristics the data itself possesses are fundamental for           range describes the part of the run-to-failure trajectory
+utilizing a data set in PHM. In the following, industry-typical         that is covered by the data. The second sub-criterion
+data scenarios are outlined based on their application                  considers a system with maintenance and subsequent
+independent data characteristics. This is primarily illustrated         restart. The third sub-criterion involves the lifetime
+using the prognosis as an example task, but could also be               criterion of the system.
+applied to the other tasks, such as diagnosis. It is done by        x   Data acquisition analyses the time characteristics of the
+defining a set of criteria with six main criteria and their             measurement series. The first sub-criterion of recording
+respective sub-criteria, as shown in Table 1. There are already         distinguishes based on the time intervals between
+various collections of criteria for the evaluation of data sets,        recorded data during the service life. The second sub-
+which mostly come from the general data analysis domain.                criterion covers the measurement properties of the data
+Examples of such collections are Kahn, Strong, and Wang                 recording. Part of this is the sampling rate as well as the
+(2002), Wang, Storey, and Firth (1995), and Merino,                     absolute time information on the data points.
+Caballero, Rivas, Serrano, and Mario (2016). Those focus on
+general data quality aspects, such as data format consistency,      x   The third main criterion of data on degradation looks
+data security, and ease of manipulation. However, the authors           in detail at the state of information on the degradation
+are not aware of any having such a PHM focus, as is required            process of the system. The first sub-criterion assesses
+for the present objective. Hence, criteria are designed by the          whether the available data includes parameters affecting
+authors. These are only intended to provide a generally valid           the degradation, such as mileage, operating hours and
+description of typical data scenarios for PHM in industry,              whether measurements also provide information about
+taking into account the main application independent                    the health; for instance, particle concentration in oil.
+characteristics. It should be noted that the individual sub-            Next, it is evaluated whether the measurements directly
+criteria are not prioritized or further detailed, which is beyond       reflect the health respective degradation or, as is usually
+the scope of this paper. In the following, the six main criteria        the case, indirectly via a required data processing (Si,
+with their sub-criteria are briefly explained:                          Wang, Hu, & Zhou, 2011). The third sub-criterion takes
+                                                                        into account the prior knowledge about features that
+x    The history provided by the data contains the sub-                 enable designing health indicators and prior knowledge
+     criteria of data history range, system with maintenance,
+
+
+                                                                                                                                 3
+                                 INTERNATIONAL JOURNAL OF PROGNOSTICS AND HEALTH MANAGEMENT
+
+
+
+    on the overall degradation process. The fourth sub-             Data history range (criterion 1.1) examines the degradation
+    criterion judges the reproducibility of data or present         trajectories available for developing a prognosis application.
+    effects.                                                        It is analyzed how these are distributed over the service life
+x   In the fourth main criterion, information on the overall        of the technical system. These trajectories can be run-to-
+    system are considered. The first sub-criterion of               failure or run-to-threshold data. In case of run-to-failure, data
+    operating condition characterizes the sequence of               is available from the start to the failure throughout the entire
+    operating conditions during the service life of a system.       life of the system. For run-to-threshold, data is available up
+    The second sub-criterion focuses on the number of               to a defined threshold, where the system is also considered to
+    failure modes and the number of components that can             be failed.
+    trigger a failure of the system. The third sub-criterion        Degradation trajectories are best suited for developing a
+    considers the cause of the intended adoption of PHM.            prognosis application when the actual failure and RUL
+    The fourth sub-criterion examines possible redundancies         information exists. Data up to the point of system failure
+    of components.                                                  often originate from life cycle tests carried out specifically
+x   The fifth main criterion includes the quality and               for this purpose. However, in actual applications, particularly
+    quantity of the data at hand. The first sub-criterion           valuable systems are rarely operated up to the point of actual
+    assesses the availability of data within the state space.       system failure (Cannarile, Baraldi, & Zio, 2019). There are
+    The second sub-criterion covers the volume of data              several reasons for the frequent occurrence of not recording
+    available. The total number of data and if can be assigned      the end of life. These include, as partially mentioned,
+    the number of data points per state are taken into              predetermined replacement due to preventive maintenance.
+    account.                                                        Predetermined maintenance intervals remain widespread in
+x    The sixth main criterion looks at the source from which        industrial domains, which makes such data frequently present
+     the data is derived. The data can be generated by              (Chao, Kulkarni, Goebel, & Fink, 2021; Widodo & Yang,
+     simulation, laboratory, test bench experiments or real         2011). Furthermore, a long service life of a highly reliable
+     application.                                                   system can lead to the same type of data. Associated with this
+                                                                    is the case of a short overall product development schedule,
+In order for a data set to offer the greatest possible added
+                                                                    where life testing or field deployment may not have
+value, sufficient knowledge on the existing data scenario is
+                                                                    sufficiently progressed at the time of PHM implementation
+necessary. Developing a dependable PHM application
+                                                                    for a large number of failures to be present. However, it may
+without knowledge on the system considered and its available
+                                                                    also plainly be the case that the system cannot be operated up
+data is rather impossible in the authors' point of view. The
+                                                                    to its failure point due to the resultant harm (Chao, Kulkarni,
+level of knowledge about a planned PHM application can be
+                                                                    Goebel, & Fink, 2021). Hence, despite a large number of life
+assessed, for example, in using this set of criteria.
+                                                                    cycles recorded, the development of the prognosis
+                                                                    application is made more difficult as the actual RUL
+3. IDENTIFICATION OF DATA SCENARIOS RELEVANT FOR                    information is not available.
+     INDUSTRIAL APPLICATIONS
+                                                                    The next typical data scenario in industry is a data history that
+Specific data scenarios that typically occur with the same          starts during the life cycle. For systems with long service
+general data set characteristics in industrial application hold     lives, such as machine tools, it is often the case that they are
+strong importance for the widespread implementation of              retrofitted with sensors and degradation recording is started
+PHM (Weiss & Brundage, 2021). These data scenarios –                during the service life. Thus, the progression of the health in
+which involve deficiencies that require their own                   an initial part of the service life is not covered by the data and
+methodological adaptation – are therefore addressed. It is          is therefore unknown.
+already evident from the combinatorics of the criteria that
+there are a large number of data scenarios. Hence, the focus        In accordance with the description above, two relevant data
+is on relevant data scenarios related to individual criteria. The   scenarios are identified:
+identification and categorization of data scenarios is based on
+                                                                    a) Data without the end of life being recorded
+the criteria collection. The selection of the data scenarios that
+                                                                    b) Data with start of the data history during the life cycle
+are considered as relevant and listed below is based on typical
+causes of industrial applications, which yield to these
+scenarios with their data characteristics. Therefore, in the
+following, each data scenario is illustrated based on a
+description of its various causes. The assessment of industry-
+typical causes is based on the experience of the authors.
+
+
+
+
+                                                                                                                                    4
+                                  INTERNATIONAL JOURNAL OF PROGNOSTICS AND HEALTH MANAGEMENT
+
+
+
+Criterion 2.1 considers the recording of the data over time            Systems for which no overall time information is available
+in the context of the overall service life. In continuous              can be seen, for example, in self-sufficient systems that are
+recording, the measurements are logged concurrently as the             not continuously powered. Therefore, the corresponding data
+system operates and are available seamless throughout its              scenario is identified as:
+service life. If such form of recording is not performed or is
+                                                                       e)   Data batches with total/with partial/without time
+not possible, gaps in the recording will occur. These can
+                                                                            information
+occur either equidistant or randomly resp. stochastically
+distributed.                                                           Regarding the criterion of redundancy (criterion 4.4), the
+                                                                       aspect of workload sharing is considered, for example. This
+An example that causes such gaps is the use of defined test
+                                                                       means similar subsystems that work in parallel and are all
+cycles for monitoring. These always follow the same
+                                                                       active during operation. If one subsystem fails, the remaining
+sequence, after a period of use. This procedure is also referred
+                                                                       subsystem(s) also takes over its workload. As illustrated by
+to as active inspection or active monitoring. Such a scenario
+                                                                       this example, redundancies in a system already influence
+occurs, for instance, in the case of machining centers that
+                                                                       maintenance strategies that do not take into account the
+manufacture products with different levels of complexity.
+                                                                       current system state, namely corrective maintenance and
+Here, the operating time varies depending on the machined
+                                                                       preventive maintenance (Dong, Liu, & Du, 2019; Mendes,
+product and job. Thus, possible test cycles can only be
+                                                                       Coit, & Ribeiro, 2014). However, for maintenance strategies
+performed between machining steps or after finishing a job at
+                                                                       such as predictive maintenance, redundancy is particularly
+the earliest (Tobon-Mejia, Medjaher, & Zerhouni, 2012).
+                                                                       important. The load distribution among intact subsystems as
+This results in degradation measurements with inconsistent
+                                                                       well as the degradation state of the partner system(s)
+time spacing. It is similar to a random sample from the data
+                                                                       significantly influence the RUL of each subsystem.
+of the continuous recording. The same data characteristic
+                                                                       Furthermore, there can be sudden changes in the loads as well
+occurs when the objective is to reduce the amount of data. In
+                                                                       as the RUL if one subsystem fails. This research topic is
+industrial applications, it is often attempted to keep the
+                                                                       highly relevant to the industry and at the same time represents
+amount of unmodified data transmitted and stored as small as
+                                                                       a field of research with few PHM-related studies thus far. The
+reasonably possible (Omri, Al Masry, Mairot, Giampiccolo,
+                                                                       basis for such research could be a data set that reflects this
+& Zerhouni, 2021). This can result in equidistant or randomly
+                                                                       data scenario. The resulting data scenario is:
+distributed data batches, albeit which do not originate from a
+defined test interval with a specified load.                           f)   Data on the life of redundant subsystems containing the
+                                                                            failure of subsystem(s)
+In addition to the previous time-influenced recordings,
+condition or event-based recordings are also relevant in               In the context of PHM, the state space (criterion 5.1)
+practice and likewise lead to gaps in the data set. Here, the          represents all possible loads, fault modes, wear rates,
+acquisition is started when a defined threshold value is               operating states, etc. of the technical system. It needs to be
+exceeded; for example, in terms of load, fault mode or                 assessed to what extent the relevant part of the state space –
+damage gradient. This can also be seen as a recording trigger          as it can also be encountered in the actual application – is
+(Zhu, Nostrand, Spiegel, & Morton, 2014). It should be noted           covered by the data. Partial coverage of the state space
+that the measurement can be continuous but the data is only            occurs, for example, when not all fault modes are present in
+recorded, i.e. stored, when a changed state is detected. By            the data used for the development of a prognosis application.
+recording in this manner, the amount of data can be reduced
+by avoiding recording when there is little or no change of             As argued in section 1, it is not possible to generate actual
+state and thus information.                                            run-to-failure records for most industrial applications of
+                                                                       PHM, as the service life is a few years of operation. Possible
+Hence, the following two data scenarios are identified:                solutions to the problem of no actual records being accessible
+                                                                       are accelerated testing under laboratory conditions or, to
+c) Data with random recording
+                                                                       some extent, simulations tailored to the degradation process.
+d) Data with condition-dependent recording
+                                                                       Even if the basic degradation mechanism is to be maintained,
+The measurement properties (criterion 2.2) take into                   such data is referred to an extended state space in the criteria
+account the time information linked to the data. For example,          catalog, as they do not occur in the actual application. In the
+this affects the ability to assign a data point to the overall life.   case of accelerated testing, this leads to load conditions that
+This could be knowledge on the total current operating time            are significantly increased to enhance degradation. The
+or the current cycle count. The length of the service life thus        challenge in developing a prognosis for this kind of scenario
+far is usually an important input feature in the prognosis on          is to accomplish the carry-over to the actual application with
+its own. For example, a distinction can be made between                regular load conditions.
+similar appearing run-in effects at the beginning of the
+service life and degradation effects at the end.
+
+
+
+
+                                                                                                                                     5
+                                INTERNATIONAL JOURNAL OF PROGNOSTICS AND HEALTH MANAGEMENT
+
+
+
+Based on the described data characteristics, there are two data    is extended to research institutions and comparable
+scenarios of practical relevance:                                  organizations that deal with the aforementioned PHM tasks.
+                                                                   Another beneficial feature is the recency of this overview. In
+g) Data sets with partial coverage of the relevant state space
+                                                                   the light of Industry 4.0 and the associated availability of
+h) Presence of training data that is to be mapped to the
+                                                                   data, ML approaches are becoming increasingly common in
+   extended state space
+                                                                   technical systems and production facilities (Dalzochio, et al.,
+The data quality (criterion 5.3) is significantly affected by      2020; Cachada, et al., 2018). This enhances the interest in
+the sensors, sensor location, and peripherals used. This yields    data sets derived from technical systems, as these are also
+a different bias and different random noise (Atamuradov,           needed and used in other research areas. Therefore, artificial
+Medjaher, Dersin, Lamoureux, & Zerhouni, 2017). If                 intelligence (AI) or ML dedicated data repositories are
+technical systems are in the market with different sensors and     considered in the overview as additional platforms. By
+their positioning, for example at the customer’s request, this     covering research institutions and comparable organizations
+results in varying data qualities. This typically occurs when      as well as AI and ML dedicated data repositories, the
+cost-benefit analyses are carried out in the course of product     overview is the most comprehensive so far.
+development to identify the most suitable components for
+                                                                   An important constraint of the overview is that data sets that
+different customers from a techno-economic perspective. A
+                                                                   do not consider the degradation state but only the process
+diagnostic or prognostic model that has been developed based
+                                                                   quality (often the quality of a manufactured product) are not
+on a significantly different data quality must take this into
+                                                                   included.
+account. This applies especially for the management of
+uncertainties. The corresponding data scenario is therefore:
+                                                                   4.2. Overview and its Analysis
+i)   Run-to-failure data with differing measurement bias
+                                                                   Table 3 in the appendix lists in detail the 70 PHM-related data
+     and noise
+                                                                   sets contained in the overview. The table also contains the
+                                                                   publishing authors or institutions and the URL where the
+4. EVALUATION BASED ON AN OVERVIEW OF PUBLICLY
+                                                                   respective data set can be obtained. A summary of the
+    AVAILABLE DATA SETS
+                                                                   distribution of the 70 data sets among their sources and
+Large run-to-failure data sets are hold strong value. The          platforms is given in Figure 1. With a total of 29 data sets, the
+companies and institutions that possess such data sets             PHM Society and NASA continue to have a major impact on
+therefore have clear reasons not to provide free access to their   the provision of data sets. The data sets from these sources
+data sets (Saxena, Goebel, Simon, & Eklund, 2008). The few         are widely used in the PHM-related literature and are most
+publicly available data sets therefore hold strong value to the    commonly used as benchmarks to validate newly developed
+research community. They enable the mutual empirical               PHM methods (Lei, et al., 2018; Kim, An, & Choi, 2016).
+benchmarking of the many different methods at PHM                  This is advantageous for developing PHM methods as it
+(Ramasso & Saxena, 2014). Furthermore, they offer                  provides a reference for the performance of a method. For the
+researchers the opportunity to demonstrate a concrete              industrial application of PHM, this can be a disadvantage as
+application of their presented methods. Hence, as a basis for      the same use cases and thus also the same data scenarios are
+further research on data sets with specific data scenarios, this   considered.
+section provides an overview of the currently publicly
+                                                                   Additional sources and platforms include the online
+available data sets and highlights different aspects of the
+                                                                   community Kaggle (Kaggle: Your Machine Learning and
+overview. Subsequently, the data sets from the overview are
+                                                                   Data Science Community, 2021) and the repository of the
+examined for compliances with the identified data scenarios
+                                                                   University of California at Irvine (UCI) (UCI Machine
+from section 3.
+                                                                   Learning Repository, 2021). Especially for the online
+                                                                   community Kaggle, it can be observed that data sets are
+4.1. Scope of the Data Set Overview                                added here with major frequency compared to the previous
+The current data set overview differs from previous                sources, thus providing the most recent data sets. The sources
+overviews such as Jia, Huang, Feng, Cai, and Lee (2018) and        of the remaining 22 data sets, which are referred to as Others
+Huang, Di, Jin, and Lee (2017), because in addition to typical     (PHM 16 /ML 6) in Figure 1, stem from other online
+PHM sources, as they are stated in Lei et al. (2018) and           communities, the various research institutions and
+Ochella and Shafiee (2019), many more sources and                  comparable organizations. The division of their focus on
+platforms for possible data sets are taken into account. By        PHM or general ML can be made rather less precisely. Again,
+typical sources, we refer to the PHM Data Challenges of the        some of the data sets are very recent in terms of their
+PHM Society (PHM Society, 2021) and the Prognostics                publication date.
+Center of Excellence of the National Aeronautics and Space
+Administration (NASA) (Prognostics Center of Excellence -
+Data Repository, 2021). Moreover, the scope of the overview
+
+
+
+                                                                                                                                  6
+                                 INTERNATIONAL JOURNAL OF PROGNOSTICS AND HEALTH MANAGEMENT
+
+
+
+                                                                    the test data comprised one of the boundary particle sizes
+      70
+                                                                    would be even more challenging.
+    Datasets
+                                                                    Further data scenarios cannot be identified based on the data
+                     14
+                  PHM Society                 45
+                                                                    set descriptions. The following seven data scenarios are
+                                         Institutions               therefore designated as not covered thus far:
+                      15
+                                        and Platforms               x   Data without the end of life being recorded (a)
+                     NASA
+                                         dedicated to
+                      16                    PHM                     x   Data with random recording (c)
+                  Others PHM                                        x   Data with condition-dependent recording (d)
+                       13                                           x   Data batches with total/with partial/without time
+                     Kaggle                   25                        information (e)
+                                         Institutions               x   Data on the life of redundant subsystems containing the
+                       6
+                                        and Platforms
+                      UCI                                               failure of subsystem(s) (f)
+                                         dedicated to
+                       6                 general ML                 x   Presence of training data which is to be mapped to the
+                   Others ML                                            extended state space (h)
+ Figure 1. Depiction of the number of data sets provided by         x   Run-to-failure data with differing measurement bias and
+                       each platform.                                   noise (i)
+
+Data sets from PHM Challenges and the NASA are generally            For data scenario (a), it is noted that there are data sets for
+well documented in accordance with scientific standards,            which no exact point of failure is defined. However, these
+which also applies to various other data sets from PHM-             data sets do not contain any test data for which the end of life
+related institutions, as can be seen in Saxena, Goebel, Simon,      or the RUL value is specified. The objective of the data
+and Eklund (2008), for instance. Especially regarding other         scenario to make the most use of incomplete degradation
+sources and platforms, the quality of the information on the        trajectories for the effective development of a RUL
+data should not be neglected when using them. Nevertheless,         prediction is thus not addressed.
+many data sets with a logical structure and valuable                For data scenario (h), the following still needs to be
+description are also included here. Data sets that have no          considered. In the overview, no equivalent data set that
+actual description at all are not part of this overview, as their   reflects these characteristics is found. While there are data
+usability and therefore value is clearly limited.                   sets such as IEEE PHM Data Challenge 2012 - FEMTO
+                                                                    Bearing Data Set and NASA - IGBT that stem from
+4.3. Status of the Representation of Data Scenarios                 accelerated life tests, there is no test data under regular load
+In the following, the data scenarios from the overview are          conditions. As such, these data sets do not address the carry-
+examined for compliances with the identified data scenarios         over challenge in this scenario, but rather contain a PHM task
+from section 3. The descriptions of the data sets were              under special load conditions.
+considered to estimate their respective data scenarios. First,      The 70 data sets listed in Table 3 in the appendix often
+the data scenarios for which there is a corresponding data set      originate from specific tests or simulations. Consequently,
+are specified.                                                      they generally have a significantly higher degree of
+Data with start of the data history during the life cycle           completeness than is usually the case in real applications and
+(b): This data scenario is already considered in the NASA -         do not sufficiently represent the previously mentioned data
+Turbofan engine degradation simulation data set, which is           scenarios. Among other things, one main task in PHM
+often used as a benchmark in PHM research. The data set             research is therefore still to generate realistic data sets that
+involves initial wear at the start of the simulated turbines’       require purposeful treatment of deficiencies and data
+service life trajectories (Saxena, Goebel, Simon, & Eklund,         characteristics.
+2008). This can be considered as a start during the lifetime.
+                                                                    5. ESTABLISHED PROGRAM TO GENERATE DATA SETS
+Data sets with partial coverage of the relevant state space             FOR RELEVANT DATA SCENARIOS
+(g): The data set that shares this scenario is Data Challenge
+PHM Soc. 2020 Europe - Filtration System. The training data         In order to facilitate research regarding the most relevant data
+only contains run-to-failure data sets with particles of size       scenarios, a program is established. In accordance with the
+45 − 53 μm and 63 − 75 μm. On the other hand, the test              conclusion of the previous section, one main objective of this
+data only examines predictions for particles of size 53 −           program is to generate and publicly provide data sets
+63 μm. Hence, data on this particle size are not available for      reflecting the data scenarios. For this purpose, an application
+modeling or training. This results in incomplete coverage of        with its degradation process is selected as data source and the
+the relevant state space. Nonetheless, an extrapolation where       corresponding test bench is introduced.
+
+
+
+                                                                                                                                  7
+                                 INTERNATIONAL JOURNAL OF PROGNOSTICS AND HEALTH MANAGEMENT
+
+
+
+5.1. Selection Process of the Test Bench Application                attachment, such as wire bond, solder leads, and bond pads.
+                                                                    This is primarily due to temperature and motion factors.
+The selection of the application with its degradation process,
+                                                                    Material stresses can arise from temperature gradients or
+which is studied on the test bench, takes place in two stages.
+                                                                    thermal load cycles when a thermal expansion mismatch
+The result of an initial pre-selection of possibilities is four
+                                                                    exists. Vibrations and shocks are the main source of stress by
+applications, which are described below with the central
+                                                                    motion (Gu, Barker, & Pecht, 2007; Cheng, Raghavan, Gu,
+characteristics of their degradation process. They are all
+                                                                    Mathew, & Pecht, 2018, S. 63ff. 75).
+fundamentally suitable to be used as studied application. For
+the final selection, special focus is placed on research aspects    4. Wear of stamping dies: Stamping is a widely-applied
+of PHM. Based on these aspects, the final selection is              type of sheet metal processing method. Stamping is a highly
+explained subsequently.                                             complex process with many influencing parameters such as
+                                                                    elastic and plastic deformations, lubrication, the dynamic and
+1. Filtration: Almost all industries depend on filtration as a
+                                                                    static behavior of the matrix (Ge, Du, Zhang, & Xu, 2004).
+process step, such as the food, power generation, chemical
+                                                                    In particular, the increasingly relevant processing of high-
+industries, etc. The health of a filter has a considerable
+                                                                    strength steels is responsible for high wear rates and the
+influence on the filter performance itself, but also on the
+                                                                    resulting defective production (Shanbhag, Rolfe,
+efficiency of the respective overall industrial process of
+                                                                    Arunachalam, & Pereira, 2018). The main causes of wear are
+which it is part (Sparks & Chase, 2015). The degradation and
+                                                                    adhesive and abrasive wear. The degradation due to wear
+the resulting maintenance process of a filter are primarily
+                                                                    occurs often highly stochastically and rapidly progresses,
+caused by its loading. There are additional failure
+                                                                    which makes fixed maintenance times unsuitable. There are
+mechanisms of minor relevance such as aging, fatigue or
+                                                                    various approaches for capturing the degradation state, such
+chemical damaging (Sparks & Chase, 2015; Saarela,
+                                                                    as measurements of stamping force, strain, acoustic emission,
+Hulsund, Taipale, & Hegle, 2014). Here, only the separation
+                                                                    and vibration (Huang & Dzulfikri, 2021). A test bench to
+of solids and fluids (here: liquids, gases) is examined, which
+                                                                    investigate wear of the stamping die can be undertaken, as
+is the filtration type with the highest industrial significance.
+                                                                    Ge, Du, Zhang, and Xu (2004) and Shanbhag, Pereira, Voss,
+For instance, the global industrial air filtration market in 2019
+                                                                    Ubhayaratne, and Rolfe (2019) show in a reduced scale.
+is estimated at USD 3.19 billion (Statista Research
+Department, 2019). Consequently, filtration has also been           The four applications considered feature degradation
+studied in PHM; for example, in Eker, Camci, and Jennions           processes that are representative of PHM deployments. The
+(2016), Sreenuch, Khan, and Li (2015), Saarela, Hulsund,            final decision on the test bench application is based on
+Taipale, and Hegle (2014), and Skaf, Eker, and Jennions             aspects that particularly address the provision of data relevant
+(2017). The main focus of these works is placed on the              to PHM research. These aspects are physical modeling of the
+filtration of solids from liquids, more precisely the fuel          degradation process, variety of operating conditions, testing
+filtration of vehicles.                                             effort, and research potential on system-level PHM. From the
+                                                                    authors’ perspective, filtration is consistently ranked among
+2. Gear failure: As with filtration, almost all industries          the best in all aspects. Therefore, filtration is selected as the
+depend on gears and the assurance of their reliable operation.      test bench application and its properties with respect to these
+Hence, degradation of gears – especially in the context of          aspects are described in the following. As mentioned above,
+condition diagnosis – has already been thoroughly                   filtration studies in PHM have mainly focused on the
+investigated within PHM (Sharma & Parey, 2016). Common              separation of liquid and solid particles to date. However, here
+fault modes for gears are scuffing, pitting, spalling, abrasive     the separation of gas and solid particles is now applied.
+wear, and cracking (Sharma & Parey, 2016; Cubillo,                  Therefore, the application with its generated data
+Perinpanayagam, & Esperon-Miguez, 2016). The underlying             significantly differs from previous test setups and especially
+causes of such failures can be divided into three categories:       from the data set Data Challenge PHM Soc. 2020 Europe -
+operational conditions (overload, fatigue, etc.), lubricant         Filtration System in the overview.
+(lubricant failure, contamination, etc.), and assembly
+(misalignment, tight fit, etc.) (Cubillo, Perinpanayagam, &         Physical modeling of the degradation process:
+Esperon-Miguez, 2016). The most common measurement                  Degradation processes of various technical systems are
+techniques for monitoring gears are measurement of                  highly complex. Consequently, physical modeling of them is
+vibration, acoustic emission, temperature, oil condition, and       only possible at all with great effort. A distinct feature of
+torque fluctuation (Večeř, Kreidl, & Šmíd, 2005; Kundu,             filter loading for PHM research is that it is one of the few
+Darpe, & Kulkarni, 2020).                                           failure mechanisms with significant complexity, besides
+                                                                    crack propagation, for which several physical models are
+3. Mechanical stress to the attachment of electronic                nevertheless described in the literature; for example, Eker,
+components: Nowadays, most technical systems include                Camci, and Jennions (2016), Abdolghader, Brochot,
+electronic components, which is why an in-depth study of            Haghighat, and Bahloul (2018), Chikhi, Clavier, Laurent,
+their degradation process has already taken place in PHM            Fichot, and Quintard (2016), Thomas, Penicot, Contal,
+research. A typical failure mechanism is the fatigue of their
+
+
+                                                                                                                                   8
+                                INTERNATIONAL JOURNAL OF PROGNOSTICS AND HEALTH MANAGEMENT
+
+
+
+Leclerc, and Vendel (2001), Bergman, et al. (1978), and
+Novick, et al. (1990).
+Variety of operating conditions: The possibility to have a
+wide range of operating conditions is given for filtration. This
+involves variation of the filter media, test particles,
+concentration of particles in the fluid, flow rate, flow angle,
+etc. It holds particular value that the mentioned condition
+changes require no or only minor additional setup effort when
+performing run-to-failure tests.
+Testing effort: Run-to-failure test cycles of filters can be
+performed automatically in less than one hour. The
+maintenance time between tests is also less than one hour and
+primarily comprises cleaning contaminated components of
+the test bench. Consumables of the tests are simply test dust,
+filter media, and pressurized air.
+                                                                      Figure 2. Front side of the filtration test bench with its
+Research potential on system-level PHM: One area of                particle feed system, sensors, open filtration chamber, and a
+PHM that still holds strong research potential today is system-     clogged filter (Hagmeyer, Mauthe, Dutt, & Zeiler, 2021).
+level PHM (Lei, et al., 2018). It features system-wide fault
+identification, an examination of the interactions of failure      5.2. Air Filtration Test Bench
+mechanisms, and, as a result of system-wide condition
+                                                                   In the following, the test bench created in accordance with
+diagnosis and prognosis, a more comprehensive health
+                                                                   the selection is introduced. The test bench enables data
+management. Data sets on this extend beyond the objective
+                                                                   generation by performing run-to-failure tests on the filtration
+of this paper but also hold strong interest to the research
+                                                                   process of gas or, in this case, specifically compressed air.
+community. The proposal to use a filtration application for
+                                                                   The front of the test bench with its essential components,
+such studies has already been introduced by Niculita, Irving,
+                                                                   namely the particle feeder and the filtration chamber, is
+and Jennions (2012). Such a fluidic system is highly modular
+                                                                   shown in Figure 2. When testing filter media, a general
+and can be further extended by peripheral components and
+                                                                   distinction is made between pressure and suction operation.
+their failures. This includes increased system complexity due
+                                                                   The fluid flow through the filter can be achieved by
+to line branching, clogging of lines, leakage at joints and
+                                                                   increasing the pressure in front of the filter or reducing the
+lines, degradation of pump or compressor, stuck valves, etc.
+
+
+
+
+                   Figure 3. Pneumatic layout of the test bench (Hagmeyer, Mauthe, Dutt, & Zeiler, 2021).
+
+
+
+                                                                                                                                9
+                                 INTERNATIONAL JOURNAL OF PROGNOSTICS AND HEALTH MANAGEMENT
+
+
+
+pressure behind the filter compared to the ambient pressure.
+In this case, an external pressurized air supply is used to
+employ the pressure operation principle. The pneumatic
+layout of the test bench can be seen in Figure 3. The air
+preparation unit and the soft-start valve shown in it serve
+exclusively to ensure proper functioning of the system but do
+not affect the test procedure. By means of the corresponding
+valves, the filter loading can be carried out in a flow- or
+pressure-controlled mode. The connected 5/3- and 3/2-way
+valves enable selection of the respective control mode. The
+filter loading process is recorded by a flowmeter and a
+differential pressure sensor. A controlled amount of dust is
+introduced into the compressed air stream by using an
+atomizer nozzle and a particle feed drive system. The
+components behind the 3/2-way valves are those essential for         Figure 4. Representative differential pressure trajectories for
+testing, which are all shown in Figure 2. In the following, a                filter loading with three different particle sizes.
+further insight into the key features of the test bench and the      Sensors: During life tests, the volume flow rate, the velocity
+test procedure is provided.                                          of the particle feed drive, and the differential pressure across
+Filter media: The test objects are filter pads made of cut flat      the filter are recorded. The flow sensor is located in front of
+material, which are fixed in the filtration chamber. The             the particle nozzle. The reason for this is the underlying
+effective filter area is hereby squared and (78.3 𝑚𝑚)2 in            measuring principle of thermal cooling by the flowing fluid.
+size. Figure 2 also depicts a loaded filter after finishing a life   This is considerably influenced in its measuring accuracy by
+test. In addition to the effective filter area, particularly         the contamination of the pressurized air. However, the sensor
+important properties for testing are the nominal volume flow         arrangement in front of the nozzle causes the flow rate to be
+per unit area, the maximum volume flow per unit area, the            falsified. Therefore, characteristic curves are measured and
+differential pressure in the unloaded state, the maximum             used for compensation. The differential pressure across the
+differential pressure and the matching of filter class and           filter can be measured up to 2500 Pa, which is considerably
+particle distribution utilized. For the physical modeling of the     above the regular operating range of the tested filters. The
+filter loading, additional information regarding the filter          pressure ports in the filtration chamber are designed to
+medium is required. For fibrous filters, this includes the           minimize the influence on the differential pressure reading by
+packing density, the fiber diameter and the pad thickness            the air flowing past the ports.
+(Song, Park, & Lee, 2006).                                           Control and user interface: The control and data acquisition
+Test particles and particle feeding system: Standardized             is undertaken by a programmable logic controller (PLC). The
+test dusts with a defined distribution function in terms of          user interface (UI) is based on Node-Red and communicates
+particle size and chemical composition are used for filter           with the PLC via OPC UA, which is a protocol for industrial
+loading. Here, Arizona Test Dust is used in accordance with          machine-to-machine communication. The life cycle tests are
+the ISO 12103-1 standard in particle sizes from A2 to A4.            automated, whereby the test conditions and the termination
+Representative differential pressure trajectories of the three       criteria are defined in the UI.
+particle sizes are shown in Figure 4. Size type A2 is the test       As with any scientific experiment, an effort is made to reduce
+dust with the smallest mean particle size and A4 the dust with       the influence of external disturbances on the measurement
+the largest. As is common in filtration, the smaller particles       result. For this purpose, the nozzle and the filtration chamber
+result in a higher differential pressure for the same loading        are always cleaned between two test runs. The spindle of the
+mass (Song, Park, & Lee, 2006).                                      particle feeding system is always in the same bottom end
+The dispersion of the dust particles into the compressed air         position at the beginning of a test and the cylinder is filled
+takes place by means of a nozzle for powdered solids, based          with the same amount of dust. However, variations in
+on the Venturi principle. The test dust is placed in a cylinder      measurement results, which are inherent to the filter
+and fed to the nozzle by an electrically-operated spindle            application, are an essential part of its use in studies. Such
+drive, as can be seen in Figure 3. By moving the spindle drive,      fluctuations are common in PHM applications and a source
+the quantity of particles introduced into the air stream per         of uncertainty for PHM tasks (Goebel, et al., 2017). For
+time is controlled independently from the flow rate and              instance, filter media made of randomly oriented non-woven
+allows setting load profiles.                                        fiber material are tested. The orientation of fibers when the
+                                                                     filter media is manufactured results in varying filtration
+                                                                     characteristics among tested filter pads (Chase, Beniwal, &
+                                                                     Venkataraman, 2000).
+
+
+
+                                                                                                                                  10
+                                 INTERNATIONAL JOURNAL OF PROGNOSTICS AND HEALTH MANAGEMENT
+
+
+
+5.3. Data Set: Preventive to Predictive Maintenance
+A data set has been published by the name Preventive to
+Predictive Maintenance. This data set reflects the data
+scenario Data without the end of life being recorded (a).
+Information on its availability is provided in section 5.4. The
+data set is based on the transition from an application of
+preventive maintenance to an application of predictive
+maintenance, with the data deficiencies that it entails. It is an
+issue with strong industrial relevance (Selcuk, 2017). The
+fundamental difference between the two forms of
+maintenance is illustrated in Figure 5. Preventive
+maintenance takes action when a predefined threshold of time
+units, work cycles, etc. is reached. When determining the
+threshold value, factors such as the failure costs, wasted life,
+as well as the lead time of a maintenance action need to be
+taken into account. (Wang, Chu, & Wu, 2007). Since the
+actual state of the system under consideration is not
+incorporated, life is given away under a mild load, and under
+excessive load failure can still occur, as depicted in Figure
+5a. On the other hand, predictive maintenance determines the
+current condition and predicts at least the RUL. This shall            Figure 5. Visualization of a) preventive maintenance and
+enable improved management of the entire maintenance                   b) predictive maintenance (Hagmeyer, Mauthe, Dutt, &
+process, a higher usage rate of the available life and a                                     Zeiler, 2021).
+reduction of unplanned downtimes (Selcuk, 2017).
+The data set mimics already having run-to-threshold data sets        5.4. Publication of Further Data Sets for Additional
+at hand. However, due to the fixed maintenance periods while              Data Scenarios
+recording the data, these service lives are at most as long as       One main objective of the program is to publish data sets for
+the maintenance interval. The only times when the system             data scenarios where no data sets are available thus far.
+failure is known is when lifespan is shorter than the                Table 2 lists the planned publication date of further data sets
+maintenance interval. All other service lives are right              regarding their data scenarios. Besides the core objective of
+censored. The challenge of this data scenario is to make the         encouraging research on data scenarios, the data sets could
+most use of the right censored service lives for the effective       also be used directly for PHM in related filtering applications,
+development of a RUL prediction. The utilization of right            for example, as part of the research topic transfer learning
+censored data in statistical lifetime models has already been        (Moradi & Groth, 2020).
+thoroughly investigated in the related discipline of reliability
+engineering (Yang, 2007). Nonetheless, in the case of PHM,                                                           Publication
+                                                                                    Data scenario
+the research on censored data is not as extensive. There are                                                            date
+only a limited number of papers on this subject; for instance,        Data without the end of life being             Already
+Widodo and Yang (2011), TV, Diksha, Malhotra, Vig, and                recorded (a)                                   published
+Shroff (2019), and Chi, Lin, Chen, and Huang (2020).
+                                                                      Data with random recording (c)                 12/2021
+The training data provided contains 50 predominantly
+censored service lives. However, the test data contains 50            Run-to-failure data with differing
+                                                                                                                     6/2022
+randomly censored service lives for which the corresponding           measurement bias and noise (i)
+RUL is also given. The aim is to use the vast but censored
+                                                                      Data batches with total/with partial/
+training data to develop a RUL prediction for the test data and                                                      10/2022
+                                                                      without time information (e)
+present solutions for addressing the data scenario. The data
+set incorporates a much more detailed description on the test         Presence of training data which is to be
+                                                                                                                     5/2023
+configurations used, so that model-based and hybrid                   mapped to the extended state space (h)
+approaches are also feasible. Among others, this involves the
+physical properties of the filter (filter type, filter area, fiber    Data on the life of redundant subsystems
+                                                                                                                     2023-2024
+diameter, degree of filling, filter thickness) and the properties     containing the failure of subsystem(s) (f)
+of the test dust (distribution of particle size, density).           Table 2. Schedule for planned releases of publicly available
+                                                                                    data sets on data scenarios.
+
+
+
+
+                                                                                                                                  11
+                                INTERNATIONAL JOURNAL OF PROGNOSTICS AND HEALTH MANAGEMENT
+
+
+
+In addition to the data set, a detailed description of the         paper provides a significant step forward in the research on
+respective experimental condition is provided. The                 addressing industry-relevant data scenarios.
+description includes sufficient information to allow physical
+modeling to be included in the solution approach for the           6.2. Outlook
+given data scenario. The data sets and their experiment
+                                                                   Based on the identified industry-relevant data scenarios, a
+descriptions are made available on Kaggle for public use
+                                                                   methodology is to be developed within the scope of the
+under the license type CC BY 4.0. The first data set
+                                                                   introduced program. There are already methodologies for
+Preventive to Predictive Maintenance is already released.
+                                                                   PHM, but none that address ways of dealing with such data
+The publishing account and its URL are:
+                                                                   scenarios. The purpose of this methodology is to recommend
+-   Prognostics @ HSE                                              solutions for relevant data scenarios that feature data
+-   https://www.kaggle.com/prognosticshse                          deficiencies.
+The data of each test run from the test bench will only be part    From the authors’ perspective, there are a number of potential
+of one data set. New test runs will be performed for each data     research issues to further advance the state of research on the
+set, preferably also under different operating conditions. The     topic of this paper. Those issues extend beyond the scope of
+data sets to be published are therefore from different             the mentioned program.
+populations. This ensures that by including the data set of
+                                                                   The key aspect here is how to address different data
+another data scenario, no inference is possible for resolving
+                                                                   scenarios. This aspect is one of the inherent features that
+the respective deficiencies and data characteristics.
+                                                                   distinguishes PHM as a specific field of application from
+                                                                   general research on data-driven, hybrid, and model-based
+6. CONCLUSIONS AND OUTLOOK
+                                                                   methods. In PHM, there are already studies dedicated to
+                                                                   particular data scenarios, but there remains substantial
+6.1. Conclusions
+                                                                   research potential.
+Data is the basis for a purposeful implementation of PHM.
+                                                                   This research on data scenarios can be backed up by the
+However, in industrial applications, this data typically
+                                                                   creation of further data sets, in addition to what is planned
+involve specific characteristics and deficiencies. The defined
+                                                                   here. Having a selection of data sets for the same data
+criteria collection provides an approach to systematically
+                                                                   scenario where one set then proves to be the most appropriate
+assess specific data characteristics and deficiencies regarding
+                                                                   benchmark through the use by the research community is a
+PHM. The data scenarios identified by means of the criteria
+                                                                   preferable way forward. In addition, a wide-scale industry
+catalog hold strong relevance and addressing them
+                                                                   study could provide a quantitative statement on the relevance
+appropriately is an important research issue in PHM.
+                                                                   of different data scenarios.
+The ensuing overview of publicly available data sets leads to
+two main conclusions. First, data sets appropriate for PHM         ACKNOWLEDGMENT
+research are not only provided by typical sources such as the
+                                                                   Main contents of this paper were developed within the scope
+PHM Data Challenges of the PHM Society; rather, there are
+                                                                   of the "Prognostics" research project. The research project is
+also platforms on general ML that increasingly provide
+                                                                   part of the "Funding of R&D Projects at Universities of
+suitable data sets. These platforms are not covered by any
+                                                                   Applied Sciences (HAW) by the State of Baden-
+previous data set overview, making this overview the most
+                                                                   Württemberg, Germany (Ministry of Science, Research, and
+comprehensive one thus far. Second, the data sets listed in the
+                                                                   the Arts) - Innovative Projects 2019". The authors would like
+overview rarely cover industry-relevant data scenarios, but
+                                                                   to thank the funding body.
+instead often represent seamless records of specific tests and
+simulations.
+The established program to facilitate research on addressing
+data scenarios therefore has as one of its main objectives to
+provide data sets representing these data scenarios. The
+selection process of the test bench application revealed that
+filtration is the most suitable application for generating
+appropriate data. The test bench created and introduced
+features run-to-failure trajectories of filter loading that show
+the general pattern of an increasing degradation rate, which
+is representative of many PHM applications. A data set on
+one data scenario has already been published, while the
+schedule of further publications is also outlined. Overall, this
+
+
+
+
+                                                                                                                               12
+                            INTERNATIONAL JOURNAL OF PROGNOSTICS AND HEALTH MANAGEMENT
+
+
+
+APPENDIX
+No.   Data Set Designation and Reference to data origin                                      URL for Data Download
+1     Data Challenge PHM Soc. 2008 - Turbofan                                                https://ti.arc.nasa.gov/tech/dash/group
+                                                                                             s/pcoe/prognostic-data-repository/
+      NASA Prognostics Center of Excellence                                                  #phm08_challenge
+ 2    Data Challenge PHM Soc. 2009 - Gearbox Fault Detection                                 https://c3.nasa.gov/dashlink/resources
+                                                                                             /997/
+      PHM Society, Gearbox fault detection data set, 2010
+ 3    Data Challenge PHM Soc. 2010 - CNC milling machine cutters                             https://www.phmsociety.org/competiti
+                                                                                             on/phm/10
+      X. Li1, B.S. Lim1, J.H. Zhou1, S. Huang1, S.J. Phua1, K.C. Shaw1, and M.J. Er2
+      1
+        Singapore Institute of Manufacturing Technology, 71 Nanyang Drive, Singapore
+      638075 2School of Electrical and Electronic Engineering, Nanyang Technological
+      University, Nanyang Avenue, Singapore 639798
+ 4    Data Challenge PHM Soc. 2011 - Anemometer Fault Detection                              https://www.phmsociety.org/competiti
+                                                                                             on/phm/11/problem
+      Creators Unknown
+ 5    Data Challenge PHM Soc. 2013                                                           https://www.phmsociety.org/events/co
+                                                                                             nference/phm/13/challenge
+      Creators Unkown
+ 6    Data Challenge PHM Soc. 2014                                                           https://www.phmsociety.org/events/co
+                                                                                             nference/phm/14/data-challenge
+      Creators Unknown
+ 7    Data Challenge PHM Soc. 2015 - Plant Fault Detection                                   https://www.phmsociety.org/events/co
+                                                                                             nference/phm/15/data-challenge
+      Creators Unknown
+ 8    Data Challenge PHM Soc. 2016 - Semiconductor CMP                                       https://www.phmsociety.org/events/co
+                                                                                             nference/phm/16/data-challenge
+      Crystec Technology Trading GmbH
+ 9    Data Challenge PHM Soc. 2017 - Bogie Vehicle                                           https://www.phmsociety.org/events/co
+                                                                                             nference/phm/17/data-challenge
+      Creators Unknown
+ 10   Data Challenge PHM Soc. 2018 - Ion Mill in Waver Manufactoring                         https://www.phmsociety.org/events/co
+                                                                                             nference/phm/18/data-challenge
+      A dataset shared by Kai Goebel (NASA)
+ 11   Data Challenge PHM Soc. 2019 - Fatigue Cracks                                          https://www.phmdata.org/2019datach
+                                                                                             allenge/
+      Creators Unknown
+ 12   Data Challenge PHM Soc. 2020 Europe - Filtration System                                http://phmeurope.org/2020/data-
+                                                                                             challenge-2020
+      Eker, O. F., Camci, F., & Jennions, I. K. (2016). Physics-based prognostic modelling
+      of filter clogging phenomena. Mechanical Systems and Signal Processing, 75, pp. 395-
+      412.
+ 13   Data Challenge PHM Soc. 2021 Europe: SCARA-robot                                       https://phm-europe.org/data-challenge
+
+      Swiss Centre for Electronics and Microtechnology (CSEM)
+ 14   PHM Data Challenge 2021 - Turbofan 2                                                   https://data.phmsociety.org/2021-
+                                                                                             phm-conference-data-challenge/
+      M. Chao, C.Kulkarni, K. Goebel and O. Fink (2021). "Aircraft Engine Run-to-Failure
+      Dataset under real flight conditions", NASA Ames Prognostics Data Repository,
+      NASA Ames Research Center, Moffett Field, CA
+      (additional validation data compared to data set no. 29 )
+ 15   NASA - Milling Data set                                                                https://ti.arc.nasa.gov/tech/dash/group
+                                                                                             s/pcoe/prognostic-data-
+      A. Agogino and K. Goebel. BEST lab, UC Berkeley. "Milling Data Set ", NASA             repository/#milling
+      Ames Prognostics Data Repository, NASA Ames Research Center, Moffett Field, CA
+ 16   NASA - Li-ion Battery Aging Datasets                                                   https://ti.arc.nasa.gov/tech/dash/group
+                                                                                             s/pcoe/prognostic-data-
+      B. Saha and K. Goebel. "Battery Data Set", NASA Ames Prognostics Data Repository,      repository/#battery
+      NASA Ames Research Center, Moffett Field, CA
+ 17   NASA - Bearing Data Set                                                                https://ti.arc.nasa.gov/tech/dash/group
+                                                                                             s/pcoe/prognostic-data-
+      J. Lee, H. Qiu, G. Yu, J. Lin, and Rexnord Technical Services. IMS, University of      repository/#bearing
+      Cincinnati. "Bearing Data Set", NASA Ames Prognostics Data Repository, NASA
+      Ames Research Center, Moffett Field, CA
+ 18   NASA - Turbofan engine degradation simulation data set                                 https://ti.arc.nasa.gov/tech/dash/group
+                                                                                             s/pcoe/prognostic-data-
+      A. Saxena and K. Goebel. "Turbofan Engine Degradation Simulation Data Set",            repository/#turbofan
+      NASA Ames Prognostics Data Repository, NASA Ames Research Center, Moffett
+      Field, CA
+
+
+
+
+                                                                                                                                   13
+                             INTERNATIONAL JOURNAL OF PROGNOSTICS AND HEALTH MANAGEMENT
+
+
+
+No.   Data Set and Reference to data origin                                                    URL for Data Download
+19    NASA - CFRP Composites Data Set                                                          https://ti.arc.nasa.gov/tech/dash/group
+                                                                                               s/pcoe/prognostic-data-repository
+      Abhinav Saxena, Kai Goebel, Cecilia C. Larrosa, and Fu-Kuo Chang "CFRP                   /#composites
+      Composites Data Set", NASA Ames Prognostics Data Repository, NASA Ames
+      Research Center, Moffett Field, CA
+20    NASA - IGBT                                                                              https://ti.arc.nasa.gov/tech/dash/group
+                                                                                               s/pcoe/prognostic-data-
+      J. Celaya, Phil Wysocki, and K. Goebel "IGBT Accelerated Aging Data Set", NASA           repository/#igbt
+      Ames Prognostics Data Repository, NASA Ames Research Center, Moffett Field, CA
+21    NASA - Trebuchet                                                                         https://ti.arc.nasa.gov/tech/dash/group
+                                                                                               s/pcoe/prognostic-data-repository
+      B. Morton. Sentient Corporation. "Trebuchet Data Set", NASA Ames Prognostics             /#trebuchet
+      Data Repository, NASA Ames Research Center, Moffett Field, CA
+22    NASA - Randomized Battery Usage Data Set                                                 https://ti.arc.nasa.gov/tech/dash/group
+                                                                                               s/pcoe/prognostic-data-repository
+      B. Bole, C. Kulkarni, and M. Daigle "Randomized Battery Usage Data Set", NASA            /#batteryrnddischarge
+      Ames Prognostics Data Repository, NASA Ames Research Center, Moffett Field, CA
+23    NASA - Capacitor Electrical Stress                                                       https://ti.arc.nasa.gov/tech/dash/group
+                                                                                               s/pcoe/prognostic-data-repository
+      J. Renwick, C. Kulkarni, and J Celaya "Capacitor Electrical Stress Data Set", NASA       /#escapacitor
+      Ames Prognostics Data Repository, NASA Ames Research Center, Moffett Field, CA
+24    NASA - MOSFET Thermal Overstress Aging                                                   https://ti.arc.nasa.gov/tech/dash/group
+                                                                                               s/pcoe/prognostic-data-
+      J. R. Celaya, A. Saxena, S. Saha, and K. Goebel "MOSFET Thermal Overstress Aging         repository/#mosfet
+      Data Set", NASA Ames Prognostics Data Repository, NASA Ames Research Center,
+      Moffett Field, CA
+25    NASA - Capacitor Electrical Stress 2                                                     https://ti.arc.nasa.gov/tech/dash/group
+                                                                                               s/pcoe/prognostic-data-repository
+      J. Celaya, C. Kulkarni, G. Biswas, and K. Goebel "Capacitor Electrical Stress Data Set   /#eoscapacitor
+      - 2", NASA Ames Prognostics Data Repository, NASA Ames Research Center,
+      Moffett Field, CA
+26    NASA - HIRF Battery                                                                      https://ti.arc.nasa.gov/tech/dash/group
+                                                                                               s/pcoe/prognostic-data-repository
+      C. Kulkarni, E. Hogge, C. Quach and K. Goebel "HIRF Battery Data Set", NASA              /#hirfbatterytests
+      Ames Prognostics Data Repository (http://ti.arc.nasa.gov/project/prognostic-data-
+      repository), NASA Ames Research Center, Moffett Field, CA
+27    NASA - Small Satellite Power Simulation                                                  https://ti.arc.nasa.gov/tech/dash/group
+                                                                                               s/pcoe/prognostic-data-repository
+      C. Kulkarni and A. Guarneros "Small Satellite Power Simulation Data Set", NASA           /#smallsat
+      Ames Prognostics Data Repository, NASA Ames Research Center, Moffett Field, CA
+28    NASA - Algae Raceway Data Set                                                            https://ti.arc.nasa.gov/tech/dash/group
+                                                                                               s/pcoe/prognostic-data-
+      Brad Bebout, Leslie Profert-Bebout, Erich Fleming, Angela Detweiler, and Kai Goebel      repository/#algae
+      "Algae Raceway Data Set", NASA Ames Prognostics Data Repository, NASA Ames
+      Research Center, Moffett Field, CA
+29    NASA - Turbofan engine degradation simulation data set 2                                 https://ti.arc.nasa.gov/tech/dash/group
+                                                                                               s/pcoe/prognostic-data-repository
+      M. Chao, C.Kulkarni, K. Goebel and O. Fink (2021). "Aircraft Engine Run-to-Failure       /#turbofan-2
+      Dataset under real flight conditions", NASA Ames Prognostics Data Repository,
+      NASA Ames Research Center, Moffett Field, CA
+30    IEEE PHM Data Challenge 2012 - FEMTO Bearing Data Set                                    https://github.com/wkzs111/phm-
+                                                                                               ieee-2012-data-challenge-dataset
+      FEMTO-ST Institute, Besançon, France
+31    IEEE PHM Data Challenge 2014 - Fuel Cell                                                 https://repository.lboro.ac.uk/articles/
+                                                                                               dataset/IEEE_2014_Data_Challenge_
+      FCLAB Research Federation (FR CNRS 3539, France)                                         Data/3518141
+32    Kaggle - Air pressure system failures in Scania trucks                                   https://www.kaggle.com/uciml/aps-
+                                                                                               failure-at-scania-trucks-data-set
+      Scania CV AB - Stockholm
+33    Kaggle - CNC Mill Tool Wear                                                              https://www.kaggle.com/shasun/tool-
+                                                                                               wear-detection-in-cnc-mill
+      System-level Manufacturing and Automation Research Testbed (SMART) at the                #experiment_03.csv
+      University of Michigan
+34    Kaggle - E-coating ultrafiltration maintenance                                           https://www.kaggle.com/boyangs444/
+                                                                                               process-data-for-predictive-
+      Tinsley Bridge Limited, Sheffield, United Kingdom                                        maintenance
+35    Kaggle - Genesis Demonstrator                                                            https://www.kaggle.com/inIT-
+                                                                                               OWL/genesis-demonstrator-data-for-
+      Institut für industrielle Informationstechnik (inIT) der Technischen Hochschule          machine-learning
+      Ostwestfalen-Lippe (IMPROVE)
+
+
+
+                                                                                                                                      14
+                            INTERNATIONAL JOURNAL OF PROGNOSTICS AND HEALTH MANAGEMENT
+
+
+
+No.   Data Set and Reference to data origin                                                   URL for Data Download
+36    Kaggle - Microsoft Azure Predictive Maintenance                                         https://www.kaggle.com/arnabbiswas
+                                                                                              1/microsoft-azure-predictive-mainten
+      Azure AI Notebooks for Predictive Maintenance                                           ance?select=PdM_telemetry.csv
+37    Kaggle - One Year Industrial Component Degradation                                      https://www.kaggle.com/inIT-
+                                                                                              OWL/one-year-industrial-component-
+      Institut für industrielle Informationstechnik (inIT) der Technischen Hochschule         degradation
+      Ostwestfalen-Lippe (IMPROVE)
+38    Kaggle - Predict maintenance                                                            https://www.kaggle.com/c/predictive-
+                                                                                              maintenance1/overview
+      Creators Unkown
+39    Kaggle - Predictive Maintenance Hydraulics System                                       https://www.kaggle.com/mayank1897
+                                                                                              /condition-monitoring-of-hydraulic-
+      ZeMA gGmbH, Eschberger Weg 46, 66121 Saarbrücken                                        systems?select=description.txt
+40    Kaggle - Preventive to Predictive Maintenance                                           https://www.kaggle.com/prognosticsh
+                                                                                              se/preventive-to-predicitve-
+      Hagmeyer, Simon; Mauthe, Fabian; Dutt, Marcel; Zeiler, Peter “Preventive to             maintenance
+      Predictive Maintenance Dataset”, Hochschule Esslingen - University of Applied
+      Sciences: Research Department Reliability Engineering and Prognostics and Health
+      Management, Göppingen, Germany, DOI: 10.34740/kaggle/dsv/2339298
+41    Kaggle - Production Plant Data for Condition Monitoring                                 https://www.kaggle.com/inIT-
+                                                                                              OWL/production-plant-data-for-
+      IMPROVE research project                                                                condition-monitoring
+42    Kaggle - Pump                                                                           https://www.kaggle.com/nphantawee
+                                                                                              /pump-sensor-data
+      Kaggle User: UnknownClass
+43    Kaggle - Sensor Fault Detection                                                         https://www.kaggle.com/arashnic/sens
+                                                                                              or-fault-detection-data
+      Schneider-Electric, France
+44    Kaggle - Versatile Production System                                                    https://www.kaggle.com/inIT-
+                                                                                              OWL/versatileproductionsystem
+      Institut für industrielle Informationstechnik (inIT) der Technischen Hochschule
+      Ostwestfalen-Lippe (IMPROVE)
+45    UCI - Condition Based Maintenance of Naval Propulsion Plants Data Set                   http://archive.ics.uci.edu/ml/datasets/
+                                                                                              Condition+Based+Maintenance+of+N
+      1: DIBRIS - University of Genoa 2: School of Marine Science and Technology,             aval+Propulsion+Plants
+      Newcastle University
+46    UCI - Condition monitoring of hydraulic systems Data Set                                https://archive.ics.uci.edu/ml/datasets/
+                                                                                              Condition+monitoring+of+hydraulic+
+      ZeMA - Zentrum für Mechatronik und Automatisierungstechnik gemeinnützige GmbH           systems
+      Saarbrücken
+47    UCI - Mechanical Analysis 1990                                                          http://archive.ics.uci.edu\ml\datasets\
+                                                                                              Mechanical+Analysis
+      University of Torino, Italy
+48    UCI - Robot Execution Failures Data Set                                                 https://archive.ics.uci.edu\ml\datasets\
+                                                                                              Robot+Execution+Failures
+      Universidade Nova de Lisboa, Monte da Caparica, Portugal
+49    UCI - Steel Plates Faults                                                               https://archive.ics.uci.edu/ml/datasets/
+                                                                                              steel+plates+faults
+      Semeion Research Center of Sciences of Communication - Rome, Italy
+50    UCI - AI4I 2020 Predictive Maintenance Data Set                                         https://archive.ics.uci.edu/ml/datasets/
+                                                                                              AI4I+2020+Predictive+Maintenance+
+      Matzka, S. (2020). “Explainable Artificial Intelligence for Predictive Maintenance      Dataset
+      Applications," Proceedings of the Third International Conference on Artificial
+      Intelligence for Industries (AI4I), pp. 69-74, doi: 10.1109/AI4I49448.2020.00023.
+51    AIDAR Lab - Air Compressor                                                              http://www.iitk.ac.in/idea/datasets/
+
+      Nishchal K. Verma, R. K. Sevakula, S. Dixit and Salour A. (2016). Intelligent
+      Condition Based Monitoring using Acoustic Signals for Air Compressors, IEEE
+      Transactions on Reliability, vol. 65, no. 1, pp. 291-309.
+52    AIDAR Lab - Drill Bit                                                                   http://www.iitk.ac.in/idea/datasets/
+
+      Nishchal K. Verma, R. K. Sevakula, S. Dixit and Salour A. (2015). Data Driven
+      Approach for Drill Bit Monitoring, Reliability Digest, pp. 19-26.
+53    Aramis - Data Challenge ESREL2020PSAM15                                                 https://aramis3d.com/innovation-
+                                                                                              challenges/
+      Francesco Cannarile (Aramis Srl, Italy), Michele Compare (Aramis Srl, Italy and
+      Politecnico di Milano, Italy), Piero Baraldi (Politecnico di Milano, Italy), Zhe Yang
+      (Politecnico di Milano, Italy), Enrico Zio (Politecnico di Milano, Italy and MINES
+      ParisTech, France).
+54    Backblaze - Hard Drive Stats                                                            https://www.backblaze.com/b2/hard-
+                                                                                              drive-test-data.html
+      Backblaze, Inc.
+
+
+
+                                                                                                                                     15
+                              INTERNATIONAL JOURNAL OF PROGNOSTICS AND HEALTH MANAGEMENT
+
+
+
+ No.   Data Set and Reference to data origin                                                    URL for Data Download
+ 55    Bearing Data Center - Fan and Bearing                                                     https://csegroups.case.edu/bearingdata
+                                                                                                 center/pages/download-data-file
+       Case Western Reserve University, USA
+ 56    GitHub - Predictive Maintenance using PySpark                                             https://github.com/Azure/PySpark-
+                                                                                                 Predictive-Maintenance
+       GitHub User: linya9191
+ 57    Mendeley - Brushless DC motor                                                             https://data.mendeley.com/datasets/m
+                                                                                                 58bdhy2df/2
+       Mazzoleni, Mirko; Scandella, Matteo; Previdi, Fabio; Pispola, Giulio (2019). Data for:
+       First endurance activity of a Brushless DC motor for aerospace applications -
+       REPRISE project, Mendeley Data, V2, doi: 10.17632/m58bdhy2df.2
+ 58    Mendeley - Diesel Engine Faults                                                           https://data.mendeley.com/datasets/k2
+                                                                                                 2zxz29kr/1
+       Denys Pestana-Viana - Federal Center of Technological Education Celso Suckow da
+       Fonseca (CEFET-RJ), Rio de Janeiro, Brazil
+ 59    MFPT - Condition Based Maintenance Fault                                                  https://www.mfpt.org/fault-data-sets/
+
+       Data Assembled and Prepared on behalf of MFPT by Dr Eric Bechhoefer, Chief
+       Engineer, NRG Systems
+ 60    OpenEI - Evaluation of Building Fault                                                     https://data.openei.org/submissions/91
+                                                                                                 0
+       LBNL, PNNL, NREL, ORNL and ASHRAE RP-1312 (Drexel University)
+ 61    OpenEI - Gearbox Fault Diagnosis                                                          https://data.openei.org/submissions/62
+                                                                                                 3
+       OpenEI User: Yogesh Pandya
+ 62    ResearchGate - Driveline Unbalanced Shaft                                                 https://www.researchgate.net/publicati
+                                                                                                 on/341220576_Dataset_A_Case_Stud
+       Giacomo Barbieri and David Sanchez-Londono and Laura Cattaneo and Luca                    y_for_Problem-
+       Fumagalli and David Romero                                                                based_Learning_Education_in_Fault_
+                                                                                                 Diagnosis_Assessment
+ 63    SDOL - Diagnostics 101 bearing data                                                       https://www.kau-sdol.com/bearing
+
+       Kim, S., An, D., Choi, J-H. (2020). Diagnostics 101: A Tutorial for Fault Diagnostics
+       of Rolling Element Bearing Using Envelope Analysis in MATLAB. Applied Sciences.
+       10(20):7302. doi:10.3390/app10207302
+ 64    SDOL - HS Gear                                                                            https://www.kau-sdol.com/kaug
+
+        Creators Unknown
+ 65    SDOL - KAU Gear                                                                           https://www.kau-sdol.com/kaug
+
+        Creators Unknown
+ 66    Uni Lulea - Vibration Signals Wind Turbines                                               http://ltu.diva-portal.org/smash
+                                                                                                 /record.jsf?pid=diva2%3A1244889&d
+       Luleå University of Technology: Martin del Campo Barraza, Sergio (Department of           swid=-6104
+       Computer Science, Electrical and Space Engineering, Embedded Internet Systems
+       Lab); Sandin, Fredrik (Department of Computer Science, Electrical and Space
+       Engineering, Embedded Internet Systems Lab); Strömbergsson, Daniel (Department of
+       Engineering Sciences and Mathematics, Machine Elements)
+ 67    Uni Paderborn KAt - Bearing Damage                                                        https://mb.uni-paderborn.de/kat
+                                                                                                 /forschung/datacenter/bearing-
+       University Paderborn Kat                                                                  datacenter/data-sets-and-download/
+ 68    Virkler                                                                                   https://rdrr.io/github/SimoneHermann
+                                                                                                 /hierRegSDE/man/Virkler.html
+       Virkler, D. A., Hillberry, B. M. and Goel, P. K. (1979). The Statistical Nature of
+       Fatigue Crack Propagation. Journal of Engineering Materials and Technology 101,
+       148–153.
+ 69    WASEDA - Fault Detection and Classification                                               https://waseda.pure.elsevier.com/en/p
+                                                                                                 ublications/benchmark-datasets-for-
+       De Bruijn, B., Nguyen, T. A., Bucur, D., & Tei, K. (2016). Benchmark datasets for         fault-detection-and-classification-in-
+       fault detection and classification in sensor data. In A. Ahrens, O. Postolache, & C.      sens
+       Benavente-Peces (Eds.), SENSORNETS 2016 - Proceedings of the 5th International
+       Confererence on Sensor Networks (pp. 185-195). (SENSORNETS 2016 - Proceedings
+       of the 5th International Confererence on Sensor Networks). SciTePress.
+       https://doi.org/10.5220/0005637901850195
+ 70    Zenodo - Predictive maintenance dataset                                                   https://zenodo.org/record/3653909#.Y
+                                                                                                 AmTTBYxkcQ
+       Huawei Munich Research Center
+Table 3. Overview of publicly available datasets for research on PHM, sorted by the providing data platform. The designation
+    of the data sets is divided into two parts consisting of the source or platform and the underlying technical application.
+
+
+
+                                                                                                                                         16
+                                INTERNATIONAL JOURNAL OF PROGNOSTICS AND HEALTH MANAGEMENT
+
+
+
+                                                                   Chase, G. G., Beniwal, V., & Venkataraman, C. (2000).
+REFERENCES                                                                  Measurement of uni-axial fiber angle in non-woven
+                                                                            fibrous media. Chemical Engineering Science,
+Abdolghader, P., Brochot, C., Haghighat, F., & Bahloul, A.                  55(12), pp. 2151-2160. doi:10.1016/S0009-
+        (2018).      Airborne       nanoparticles    filtration             2509(99)00510-2
+        performance of fibrous media: A review. Science
+                                                                   Cheng, S., Raghavan, N., Gu, J., Mathew, S., & Pecht, M.
+        and Technology for the Built Environment, 24(6),
+                                                                            (2018). Physics-of-failure approach to PHM. In
+        pp. 648-672. doi:10.1080/23744731.2018.1452454
+                                                                            Prognostics and Health Management of
+Aizpurua, J. I., & Catterson, V. M. (2015). Towards a
+                                                                            Electronics: Fundamentals, Machine Learning, and
+        Methodology for Design of Prognostic Systems.                       the Internet of Things. Hoboken, USA: JohnWiley
+        Proceedings of the Annual Conference of the                         and Sons Ltd.
+        Prognostics and Health Management Society, 7.
+                                                                   Chi, Z., Lin, J., Chen, R., & Huang, S. (2020). Data-driven
+        Coronado,                                        USA.
+                                                                            approach to study the polygonization of high-speed
+        doi:10.36001/phmconf.2015.v7i1.2646
+                                                                            railway train wheel-sets using field data of China's
+Aizpurua, J. I., & Catterson, V. M. (2016). ADEPS: A
+                                                                            HSR           train.       Measurement,           149.
+        Methodology         for      Designing     Prognostic               doi:10.1016/j.measurement.2019.107022
+        Applications. Proceedings of the European                  Chikhi, N., Clavier, R., Laurent, J.-P., Fichot, F., & Quintard,
+        Conference of the Prognostics and Health
+                                                                            M. (2016). Pressure drop and average void fraction
+        Management           Society.      Bilbao,      Spain.
+                                                                            measurements for two-phase flow through highly
+        doi:10.36001/phme.2016.v3i1.1585
+                                                                            permeable porous media. Annals of Nuclear Energy,
+An, D., Choi, J.-H., & Kim, N. H. (2013). Prognostics 101:
+                                                                            94,                    pp.                    422-432.
+        A tutorial for particle filter-based prognostics                    doi:10.1016/j.anucene.2016.04.007
+        algorithm using Matlab. Reliability Engineering &          Cubillo, A., Perinpanayagam, S., & Esperon-Miguez, M.
+        System       Safety,       115,     pp.      161-169.
+                                                                            (2016). A review of physics-based models in
+        doi:10.1016/j.ress.2013.02.019
+                                                                            prognostics: Application to gears and bearings of
+Atamuradov, V., Medjaher, K., Dersin, P., Lamoureux, B., &
+                                                                            rotating machinery. Advances in Mechanical
+        Zerhouni, N. (2017). Prognostics and Health                         Engineering,           8(8),          pp.        1–21.
+        Management for Maintenance Practitioners -                          doi:10.1177/1687814016664660
+        Review, Implementation and Tools Evaluation.
+                                                                   Dalzochio, J., Kunst, R., Pignaton, E., Binotto, A., Sanyal, S.,
+        International Journal of Prognostics and Health
+                                                                            Favilla, J., & Barbosa, J. (2020). Machine learning
+        Management,                                       8(3).
+                                                                            and reasoning for predictive maintenance in
+        doi:10.36001/ijphm.2017.v8i3.2667
+                                                                            Industry 4.0: Current status and challenges.
+Bergman, W., Taylor, R. D., Miller, H. H., Bierman, A. H.,                  Computers in Industry, 123, p. 103298.
+        Hebard, H. D., daRoza, R. A., & Lum, B. Y. (1978).                  doi:10.1016/j.compind.2020.103298
+        Enhanced filtration program at LLL. A progress
+                                                                   Dong, W., Liu, S., & Du, Y. (2019). Optimal periodic
+        report. Proceedings of the 15th Nuclear Air
+                                                                            maintenance policies for a parallel redundant system
+        Cleaning Conference. Boston, USA.
+                                                                            with component dependencies. Computers &
+Cachada, A., Moreira, P. M., Romero, L., Barbosa, J., Leitno,
+                                                                            Industrial Engineering, 138, p. 106133.
+        P., Gcraldcs, C. A., . . . Moreira, A. H. (2018).                   doi:10.1016/j.cie.2019.106133
+        Maintenance 4.0: Intelligent and Predictive                Eker, O. F., Camci, F., & Jennions, I. K. (2016). Physics-
+        Maintenance System Architecture. Proceedings of
+                                                                            based prognostic modelling of filter clogging
+        the IEEE 23rd International Conference on
+                                                                            phenomena. Mechanical Systems and Signal
+        Emerging Technologies and Factory Automation
+                                                                            Processing,           75,         pp.         395-412.
+        (ETFA),       (pp.      139–146).     Turin,      Italy.            doi:10.1016/j.ymssp.2015.12.011
+        doi:10.1109/ETFA.2018.8502489                              Elattar, H. M., Elminir, H. K., & Riad, A. M. (2016).
+Cannarile, F., Baraldi, P., & Zio, E. (2019). An evidential
+                                                                            Prognostics: a literature review. Complex &
+        similarity-based regression method for the
+                                                                            Intelligent      Systems,      2,     pp.     125-154.
+        prediction of equipment remaining useful life in
+                                                                            doi:10.1007/s40747-016-0019-3
+        presence of incomplete degradation trajectories.
+                                                                   Ge, M., Du, R., Zhang, G., & Xu, Y. (2004). Fault diagnosis
+        Fuzzy Sets and Systems, 367, pp. 36-50.                             using support vector machine with an application in
+        doi:10.1016/j.fss.2018.10.008                                       sheet metal stamping operations. Mechanical
+Chao, M. A., Kulkarni, C., Goebel, K., & Fink, O. (2021).
+                                                                            Systems and Signal Processing, 18(1), pp. 143 -159.
+        Aircraft Engine Run-to-Failure Dataset under Real
+                                                                            doi:10.1016/S0888-3270(03)00071-2
+        Flight Conditions for Prognostics and Diagnostics.
+                                                                   Goebel, K., Daigle, M., Saxena, A., Sankararaman, S.,
+        Data, 6(1). doi:10.3390/data6010005
+                                                                            Roychoudhury, I., & Celaya, J. (2017). Prognostics:
+
+
+
+
+                                                                                                                                17
+                                INTERNATIONAL JOURNAL OF PROGNOSTICS AND HEALTH MANAGEMENT
+
+
+
+          The science of making predictions. CreateSpace           Mendes, A. A., Coit, D. W., & Ribeiro, J. L. (2014).
+          Independent Publishing Platform.                                    Establishment of the optimal time interval between
+Gu, J., Barker, D., & Pecht, M. (2007). Prognostics                           periodic inspections for redundant systems.
+          implementation of electronics under vibration                       Reliability Engineering & System Safety, 131, pp.
+          loading. Microelectronics Reliability, 47(12), pp.                  148–165. doi:10.1016/j.ress.2014.06.021
+          1849 - 1856. doi:10.1016/j.microrel.2007.02.015          Merino, J., Caballero, I., Rivas, B., Serrano, M., & Mario, P.
+Hagmeyer, S., Mauthe, F., Dutt, M., & Zeiler, P. (2021).                      (2016). A Data Quality in Use model for Big Data.
+          Preventive       to      predictive      maintenance.               Future Generation Computer Systems, 63, pp. 123-
+          https://www.kaggle.com/prognosticshse/preventive                    130. doi:10.1016/j.future.2015.11.024
+          -to-predicitve-maintenance,                      DOI:    Moradi, R., & Groth, K. (2020). On the application of transfer
+          10.34740/kaggle/dsv/2339298.                                        learning in prognostics and health management.
+Hemmer, M., Klausen, A., van Khang, H., Robbersmyr, K.,                       Proceedings of the Annual Conference of the PHM
+          & Waag, T. (2019). Simulation-driven Deep                           Society,                   12.                virtual.
+          Classification of Bearing Faults from Raw Vibration                 doi:10.36001/phmconf.2020.v12i1.1300
+          Data. International Journal of Prognostics and           Niculita, O., Irving, P., & Jennions, I. K. (2012). Use of
+          Health              Management,                 10(4).              COTS Functional Analysis Software as an IVHM
+          doi:10.36001/ijphm.2019.v10i4.2615                                  Design Tool for Detection and Isolation of UAV
+Huang, B., Di, Y., Jin, C., & Lee, J. (2017). Review of data-                 Fuel System Faults. Proceedings of the Annual
+          driven prognostics and health management                            Conference of Prognostics and Health Management
+          techniques: lessions learned from PHM data                          Society,          4.       Minneapolis,        USA.
+          challenge competitions. Proceedings of the                          doi:10.36001/phmconf.2012.v4i1.2116
+          Conference       Machine       Failure     Prevention    Novick, V., Higgins, P., Dierkschiede, B., Abrahamson, C.,
+          Technology. Virginia Beach, USA.                                    Richardson, W., Monson, P., & Ellison, P. (1990).
+Huang, C.-Y., & Dzulfikri, Z. (2021). Stamping Monitoring                     Efficiency and mass loading characteristics of a
+          by Using an Adaptive 1D Convolutional Neural                        typical HEPA filter media material. Proceedings of
+          Network. Sensors, 21(1). doi:10.3390/s21010262                      the 21st DOE/NRC Nuclear Air Cleaning
+Javed, K., Gouriveau, R., & Zerhouni, N. (2017). State of the                 Conference. San Diego, USA.
+          art and taxonomy of prognostics approaches, trends       Ochella, S., & Shafiee, M. (2019). Artificial Intelligence in
+          of prognostics applications and open issues towards                 Prognostic Maintenance. Proceedings of the 29th
+          maturity at different technology readiness levels.                  European Safety and Reliability Conference
+          Mechanical Systems and Signal Processing, 94, pp.                   (ESREL), (pp. 3424–3431). Hannover, Germany.
+          214–236. doi:10.1016/j.ymssp.2017.01.050                            doi:10.3850/978-981-11-2724-3_0188-cd
+Jia, X., Huang, B., Feng, J., Cai, H., & Lee, J. (2018). Review    Omri, N., Al Masry, Z., Mairot, N., Giampiccolo, S., &
+          of PHM Data Competitions from 2008 to 2017.                         Zerhouni, N. (2021). Towards an adapted PHM
+          Proceedings of the Annual Conference of the PHM                     approach: Data quality requirements methodology
+          Society,        10.        Philadelphia,        USA.                for fault detection applications. Computers in
+          doi:10.36001/phmconf.2018.v10i1.462                                 Industry, 127. doi:10.1016/j.compind.2021.103414
+Kaggle: Your Machine Learning and Data Science                     PHM Society. (2021). The Prognostics and Health
+          Community. (2021). Retrieved 06 17, 2021, from                      Management Society . Retrieved 06 16, 2021, from
+          https://www.kaggle.com/                                             https://phmsociety.org/
+Kahn, B. K., Strong, D. M., & Wang, R. Y. (2002).                  Pillai, P., Kaushik, A., Bhavikatti, S., Roy, A., & Kumar, V.
+          Information quality benchmarks: product and                         (2016). A Hybrid Approach for Fusing Physics and
+          service performance. Communications of the ACM,                     Data for Failure Prediction. International Journal of
+          45(4), pp. 184-192. doi:10.1145/505248.506007                       Prognostics and Health Management, 7(4).
+Kim, N.-H., An, D., & Choi, J.-H. (2016). Prognostics and                     doi:10.36001/ijphm.2016.v7i4.2463
+          health management of engineering systems: An             Popper, K. (1963). Conjectures and refutations : The growth
+          introduction. Berlin, Heidelberg: Springer.                         of scientific knowledge. London, UK: Routledge and
+Kundu, P., Darpe, A. K., & Kulkarni, M. S. (2020). A review                   Kegan Paul.
+          on diagnostic and prognostic approaches for gears.       Prognostics Center of Excellence - Data Repository. (2021).
+          Structural            Health              Monitoring.               Retrieved         06       16,      2021,       from
+          doi:10.1177/1475921720972926                                        https://ti.arc.nasa.gov/tech/dash/groups/pcoe/progn
+Lei, Y., Li, N., Guo, L., Li, N., Yan, T., & Lin, J. (2018).                  ostic-data-repository/
+          Machinery health prognostics: A systematic review        Ramasso, E., & Saxena, A. (2014). Performance
+          from data acquisition to RUL prediction.                            Benchmarking and Analysis of Prognostic Methods
+          Mechanical Systems and Signal Processing, 104,                      for CMAPSS Datasets. International Journal of
+          pp. 799–834. doi:10.1016/j.ymssp.2017.11.016
+
+
+
+                                                                                                                                 18
+                               INTERNATIONAL JOURNAL OF PROGNOSTICS AND HEALTH MANAGEMENT
+
+
+
+         Prognostics and Health Management, 5(2).               Statista Research Department. (2019). Size of the global
+         doi:10.36001/ijphm.2014.v5i2.2236                               industrial air filtration market between 2014 and
+Saarela, O., Hulsund, J. E., Taipale, A., & Hegle, M. (2014).            2025.
+         Remaining Useful Life Estimation for Air Filters at             https://www.statista.com/statistics/593079/global-
+         a Nuclear Power Plant. Proceedings of the                       industrial-air-filtration-market-size/:    Retrieved
+         European Conference of the PHM Society. Nantes,                 April 12, 2021.
+         France. doi:10.36001/phme.2014.v2i1.1493               Thomas, D., Penicot, P., Contal, P., Leclerc, D., & Vendel, J.
+Saxena, A., Goebel, K., Simon, D., & Eklund, N. (2008).                  (2001). Clogging of fibrous filters by solid aerosol
+         Damage propagation modeling for aircraft engine                 particles Experimental and modelling study.
+         run-to-failure simulation. Proceedings of the                   Chemical Engineering Science, 56(11), pp. 3549-
+         International Conference on Prognostics and                     3561. doi:10.1016/S0009-2509(01)00041-0
+         Health       Management.          Denver,      USA.    Tobon-Mejia, D. A., Medjaher, K., & Zerhouni, N. (2012).
+         doi:10.1109/PHM.2008.4711414                                    CNC machine tool's wear diagnostic and prognostic
+Selcuk, S. (2017). Predictive maintenance, its                           by using dynamic Bayesian networks. Mechanical
+         implementation and latest trends. Proceedings of the            Systems and Signal Processing, 28, pp. 167–182.
+         Institution of Mechanical Engineers, Part B:                    doi:10.1016/j.ymssp.2011.10.018
+         Journal of Engineering Manufacture, 231(9), pp.        TV, V., Diksha, Malhotra, P., Vig, L., & Shroff, G. (2019).
+         1670-1679. doi:10.1177/0954405415601640                         Data-driven        Prognostics     with    Predictive
+Shanbhag, V. V., Rolfe, B. F., Arunachalam, N., & Pereira,               Uncertainty Estimation using Ensemble of Deep
+         M. P. (2018). Investigating galling wear behaviour              Ordinal Regression Models. International Journal
+         in sheet metal stamping using acoustic emissions.               of Prognostics and Health Management, 10(4).
+         Wear,            414,            pp.          31-42.            doi:10.36001/ijphm.2019.v10i4.2612
+         doi:10.1016/j.wear.2018.07.003                         UCI Machine Learning Repository. (2021). Retrieved 06 17,
+Shanbhag, V., Pereira, M., Voss, B., Ubhayaratne, I., &                  2021, from https://archive.ics.uci.edu/ml/index.php
+         Rolfe, B. (2019). Developing smart multi-sensor        Uckun, S., Goebel, K., & Lucas, P. J. (2008). Standardizing
+         monitoring for tool wear in stamping process.                   research methods for prognostics. Proceedings of
+         Proceedings of the IOP Conference Series:                       the International Conference on Prognostics and
+         Materials Science and Engineering 651. Enschede,                Health        Management.         Denver,      USA.
+         Netherlands.                      doi:10.1088/1757-             doi:10.1109/PHM.2008.4711437
+         899X/651/1/012085                                      Večeř, P., Kreidl, M., & Šmíd, R. (2005). Condition
+Sharma, V., & Parey, A. (2016). A Review of Gear Fault                   Indicators for Gearbox Condition Monitoring
+         Diagnosis Using Various Condition Indicators.                   Systems. Acta Polytechnica, 45(6), pp. 35-43.
+         Procedia Engineering, 144, pp. 253-263.                         doi:10.14311/782
+         doi:10.1016/j.proeng.2016.05.131                       Wang, L., Chu, J., & Wu, J. (2007). Selection of optimum
+Si, X.-S., Wang, W., Hu, C.-H., & Zhou, D.-H. (2011).                    maintenance strategies based on a fuzzy analytic
+         Remaining useful life estimation – A review on the              hierarchy process. International Journal of
+         statistical data driven approaches. European                    Production Economics, 107(1), pp. 151-163.
+         Journal of Operational Research, 213(1), pp. 1–14.              doi:10.1016/j.ijpe.2006.08.005
+         doi:10.1016/j.ejor.2010.11.018                         Wang, R. Y., Storey, V. C., & Firth, C. P. (1995). A
+Skaf, Z., Eker, O. F., & Jennions, I. K. (2017). System                  Framework for Analysis of Data Quality Research.
+         Component Degradation: Filter Clogging in a UAV                 IEEE Transactions on Knowledge and Data
+         Fuel System. Proceedings of the Asia-Pacific                    Engineering,           7(4),      pp.       623-640.
+         Conference of the PHM Society, (pp. 334-342). Jeju,             doi:10.1109/69.404034
+         Republik Korea.                                        Weiss, B., & Brundage, M. (2021). Measurement and
+Song, C. B., Park, H. S., & Lee, K. W. (2006). Experimental              Evaluation for Prognostics and Health Management
+         study of filter clogging with monodisperse PSL                  (PHM) for Manufacturing Operations – Summary of
+         particles. Powder Technology, 163(3), pp. 152-159.              an Interactive Workshop Highlighting PHM Trends.
+         doi:10.1016/j.powtec.2006.01.016                                International Journal of Prognostics and Health
+Sparks, T., & Chase, G. (2015). Filters and filtration                   Management,                                    12(1).
+         handbook (6th ed.). Stanford: Elsevier Science.                 doi:10.36001/IJPHM.2021.v12i1.2653
+Sreenuch, T., Khan, F., & Li, J. (2015). Particle Filter with   Widodo, A., & Yang, B.-S. (2011). Machine health
+         Operational-Scalable      Takagi–Sugeno       Fuzzy             prognostics using survival probability and support
+         Degradation Model for Filter-Clogging Prognosis.                vector machine. Expert Systems with Applications,
+         Journal of Aerospace Information Systems, 12(5),                38(7),                  pp.               8430-8437.
+         pp. 398-412. doi:10.2514/1.I010385                              doi:10.1016/j.eswa.2011.01.038
+
+
+
+
+                                                                                                                           19
+                               INTERNATIONAL JOURNAL OF PROGNOSTICS AND HEALTH MANAGEMENT
+
+
+
+Wiese, B., Pedersen, N. L., Nadimi, E. S., & Herp, J. (2020).   Deutscher Ingenieure (VDI) (English: Association of
+         Estimating the Remaining Power Generation of           German Engineers). At the latter, he is chairman of the Safety
+         Wind Turbines–An Exploratory Study for Main            and Reliability Advisory Board as well as the technical
+         Bearing      Failures.      Energies,        13(13).   committees for Prognostics and Health Management and for
+         doi:10.3390/en13133406                                 Monte-Carlo-Simulation. Furthermore, he is conference
+Xu, M., Baraldi, P., Al-Dahidi, S., & Zio, E. (2019). Fault     chair of the German conference Fachtagung Technische
+         Prognostics in Presence of Event-Based                 Zuverlässigkeit (TTZ) (English: Technical Reliability
+         Measurements. Proceedings of the 29th European         Conference). His research interest is in the areas of
+         Safety and Reliability Conference (ESREL), (pp.        prognostics and health management, methods for calculating
+         1187-1193). Hannover, Germany. doi:10.3850/978-        reliability under operating conditions, as well as modeling
+         981-11-2724-3 0372-cd                                  and simulation of reliability and availability for complex
+Yang, G. (2007). Life Cycle Reliability Engineering. New        systems.
+         York: John Wiley & Sons.
+Zhu, J., Nostrand, T., Spiegel, C., & Morton, B. (2014).
+         Survey of Condition Indicators for Condition
+         Monitoring Systems. Proceedings of the Annual
+         Conference of the PHM Society, 6. Fort Worth,
+         USA. doi:10.36001/phmconf.2014.v6i1.2514
+
+
+BIOGRAPHIES
+Simon Hagmeyer works as a research assistant in the
+Reliability Engineering and Prognostics and Health
+Management research group at Esslingen University of
+Applied Science, Germany. He is currently pursuing his PhD
+in cooperation with the University of Stuttgart. He received
+his B.Eng. and his M.Sc. degree in Mechatronics from
+Reutlingen University of Applied Science, Germany. His
+research interest includes diagnostics and prognostics, data-
+driven methods, hybrid methods and data science.
+Fabian Mauthe works as a research assistant in the
+Reliability Engineering and Prognostics and Health
+Management research group at Esslingen University of
+Applied Science, Germany. He is currently pursuing his PhD
+in cooperation with the University of Stuttgart. He received
+his B.Sc. degree in Mechanical Engineering and
+Mechatronics and his M.Sc. degree in Mechanical
+Engineering from Furtwangen University of Applied
+Science, Germany. His research interest includes diagnostics
+and prognostics, condition monitoring, data-driven methods
+and machine learning.
+Peter Zeiler is professor of the Mechanical and Systems
+Engineering faculty at Esslingen University of Applied
+Sciences in Germany, where he is head of the Reliability
+Engineering and Prognostics and Health Management
+research group. He graduated in Mechanical Engineering
+with the academic degree Dipl.-Ing. He was awarded the
+academic degree Dr.-Ing. from the University of Stuttgart. He
+then worked as a team leader in the R&D at the Robert Bosch
+GmbH. Thereafter, he became head of the departments for
+Reliability Engineering and for Drive Technology at the
+Institute of Machine Components at the University of
+Stuttgart. He joined Esslingen University of Applied
+Sciences in 2017. He is also committed to the Verein
+
+
+
+                                                                                                                           20
+

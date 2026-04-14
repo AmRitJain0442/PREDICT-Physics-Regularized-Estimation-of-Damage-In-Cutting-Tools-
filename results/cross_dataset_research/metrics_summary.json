@@ -1,0 +1,66 @@
+{
+  "PHM2010": {
+    "dataset": "PHM2010",
+    "n_samples": 945,
+    "n_groups": 3,
+    "n_features": 105,
+    "failure_threshold_mm": 0.15,
+    "failure_rate": 0.1724867724867725,
+    "best_model": "RandomForest",
+    "best_rmse": 0.018126107113041624,
+    "best_r2": 0.724364829442881,
+    "classification_roc_auc_mean": 0.9671177499167815,
+    "classification_f1_mean": 0.7601851851851853
+  },
+  "NASA": {
+    "dataset": "NASA",
+    "n_samples": 146,
+    "n_groups": 16,
+    "n_features": 94,
+    "failure_threshold_mm": 0.3,
+    "failure_rate": 0.4794520547945205,
+    "best_model": "Ridge",
+    "best_rmse": 0.17275207347639054,
+    "best_r2": 0.273386065326939,
+    "classification_roc_auc_mean": 0.9141078658183922,
+    "classification_f1_mean": 0.7857323232323232
+  },
+  "UniWear": {
+    "dataset": "UniWear",
+    "n_samples": 649,
+    "n_groups": 12,
+    "n_features": 46,
+    "failure_threshold_mm": 0.22,
+    "failure_rate": 0.27426810477657937,
+    "best_model": "Ridge",
+    "best_rmse": 0.047505270846406975,
+    "best_r2": 0.14370252515680976,
+    "classification_roc_auc_mean": 0.7350003447938606,
+    "classification_f1_mean": 0.28728499877790287
+  },
+  "Simulator_NUAA": {
+    "cv_rmse_mean": 0.0517220565402972,
+    "cv_mae_mean": 0.042553999714476584,
+    "cv_r2_mean": -0.017565387649429144,
+    "failure_threshold_mm": 0.25,
+    "best_life_setting": {
+      "feed_per_tooth": 0.05,
+      "spindle_speed": 1750.0,
+      "axial_cutting_depth": 3.0,
+      "predicted_life_s": 2974.671594520548
+    },
+    "worst_life_setting": {
+      "feed_per_tooth": 0.055,
+      "spindle_speed": 1750.0,
+      "axial_cutting_depth": 3.5,
+      "predicted_life_s": 516.0144602739725
+    },
+    "taylor_like_equation": {
+      "intercept_exp": 1.5729925546092302e+28,
+      "speed_exponent": -9.280603970892308,
+      "feed_exponent": -4.648202900454498,
+      "depth_exponent": -2.0471180320497897,
+      "log_space_r2": 0.7579169756828612
+    }
+  }
+}

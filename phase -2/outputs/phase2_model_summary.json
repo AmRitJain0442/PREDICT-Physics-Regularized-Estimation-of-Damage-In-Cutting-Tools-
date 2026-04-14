@@ -1,0 +1,48 @@
+{
+  "model_name": "phase2_bi_regime_milling_wear_law",
+  "equation_family": "piecewise_power_law",
+  "transition_wear_mm": 0.25,
+  "units": {
+    "wear": "mm",
+    "time": "minutes",
+    "speed": "rpm",
+    "feed": "mm/tooth",
+    "depth": "mm"
+  },
+  "selected_coefficients": {
+    "early_exponent": 0.64,
+    "late_exponent": 1.29,
+    "reference_speed_rpm": 1800.0,
+    "reference_feed_mm_tooth": 0.05,
+    "reference_depth_mm": 3.0,
+    "k_early": 0.018580943020527416,
+    "speed_exponent": 0.3599674808570783,
+    "feed_exponent": 3.9560126665030144,
+    "depth_exponent": 0.6880734972420561,
+    "amplitude_r2": 0.7679366531421956,
+    "late_stage_factor_by_material_family": {
+      "generic": 0.25,
+      "cast_iron": 0.1488,
+      "steel": 0.3994
+    }
+  },
+  "evidence": {
+    "nuaa_early_exponent_raw": 0.6346675198604554,
+    "phm_early_exponent_raw": 0.6471159036132794,
+    "nasa_late_exponent_raw": 1.2873022539938623,
+    "nuaa_early_rmse_mm": 0.021129073209075803,
+    "phm_early_rmse_mm": 0.013622547359905953,
+    "nasa_late_rmse_mm": 0.04376000521170236
+  },
+  "equations": {
+    "condition_intensity_phi": "(speed_rpm / 1800)^speed_exponent * (feed_mm_tooth / 0.05)^feed_exponent * (depth_mm / 3.0)^depth_exponent",
+    "early_regime": "wear_mm = initial_wear_mm + calibration_factor * k_early * phi * time_min^early_exponent",
+    "late_regime": "wear_mm = transition_wear_mm + calibration_factor * late_stage_factor * k_early * phi * (time_min - transition_time_min)^late_exponent"
+  },
+  "notes": [
+    "The early-stage law is calibrated on the NUAA orthogonal milling bundle.",
+    "PHM 2010 is used to verify that the early-stage exponent remains in the same range for another milling dataset.",
+    "NASA run-to-failure milling data is used to estimate the late-stage acceleration exponent and material-family acceleration ratios.",
+    "Use calibration_factor to adapt the absolute wear rate to a specific tool-workpiece pair before relying on absolute tool-life predictions."
+  ]
+}
