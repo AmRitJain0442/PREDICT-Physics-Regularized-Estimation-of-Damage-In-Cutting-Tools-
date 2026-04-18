@@ -91,6 +91,32 @@ Export a full wear curve:
 .venv\Scripts\python.exe "phase -2\tool_life_simulator.py" --speed 1800 --feed 0.05 --depth 3.0 --threshold 0.30 --output-csv "phase -2\outputs\example_curve.csv"
 ```
 
+## Research Frontend
+
+A minimal browser UI is available in `frontend/` and mirrors the same piecewise wear law used by `tool_life_simulator.py`.
+
+Open the page directly:
+
+- `phase -2\frontend\index.html`
+
+Or serve the folder so the page loads the latest live coefficients from `outputs/phase2_model_summary.json`:
+
+```bash
+cd "phase -2"
+..\.venv\Scripts\python.exe -m http.server 8000
+```
+
+Then open:
+
+`http://localhost:8000/frontend/`
+
+The frontend includes:
+
+- direct controls for speed, feed, depth, elapsed time, threshold, material family, and calibration factor
+- optional calibration-factor estimation from one observed wear point
+- an in-browser wear-curve plot and CSV export
+- a research snapshot with the fitted coefficients, evidence metrics, and material factors
+
 ## Limits
 
 - The process-parameter exponents come primarily from the NUAA orthogonal bundle. They are best treated as a phase-2 empirical law, not a universal milling constant.

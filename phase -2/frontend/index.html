@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phase 2 Tool-Life Frontend</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <p class="eyebrow">Phase 2 / Research UI</p>
+      <h1>Milling Tool-Life Frontend</h1>
+      <p class="lede">
+        A minimal browser interface for the piecewise wear model in <span class="mono">tool_life_simulator.py</span>.
+        The page uses the same fitted exponents, transition wear, and material-family late-stage factors as the phase-2 study.
+      </p>
+      <div class="hero-badges">
+        <div class="hero-badge">
+          <span>Transition wear</span>
+          <strong id="transitionWearChip">-</strong>
+        </div>
+        <div class="hero-badge">
+          <span>Early exponent</span>
+          <strong id="earlyExponentChip">-</strong>
+        </div>
+        <div class="hero-badge">
+          <span>Late exponent</span>
+          <strong id="lateExponentChip">-</strong>
+        </div>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <section class="panel controls">
+        <div class="panel-head">
+          <p class="kicker">Scenario</p>
+          <h2>Operating point</h2>
+        </div>
+        <div class="form-grid">
+          <label>
+            <span class="label-text">Spindle speed (rpm)</span>
+            <input id="speedInput" type="number" min="100" step="10" value="1800">
+          </label>
+
+          <label>
+            <span class="label-text">Feed per tooth (mm/tooth)</span>
+            <input id="feedInput" type="number" min="0.001" step="0.001" value="0.050">
+          </label>
+
+          <label>
+            <span class="label-text">Axial depth (mm)</span>
+            <input id="depthInput" type="number" min="0.1" step="0.1" value="3.0">
+          </label>
+
+          <label>
+            <span class="label-text">Elapsed time (min)</span>
+            <input id="elapsedInput" type="number" min="0" step="1" value="45">
+          </label>
+
+          <label>
+            <span class="label-text">Wear threshold (mm)</span>
+            <input id="thresholdInput" type="number" min="0.01" step="0.01" value="0.30">
+          </label>
+
+          <label>
+            <span class="label-text">Initial wear (mm)</span>
+            <input id="initialWearInput" type="number" min="0" step="0.01" value="0.00">
+          </label>
+
+          <label>
+            <span class="label-text">Material family</span>
+            <select id="materialInput">
+              <option value="generic">Generic</option>
+              <option value="cast_iron">Cast iron</option>
+              <option value="steel">Steel</option>
+            </select>
+          </label>
+
+          <label>
+            <span class="label-text">Calibration factor</span>
+            <input id="calibrationInput" type="number" min="0.01" step="0.01" value="1.00">
+          </label>
+        </div>
+
+        <p class="support" id="materialHint">-</p>
+
+        <div class="panel-divider"></div>
+
+        <div class="panel-head compact-head">
+          <p class="kicker">Calibration</p>
+          <h2>Observed point</h2>
+        </div>
+        <p class="muted">
+          Optional. Estimate <span class="mono">lambda</span> from a measured early-stage wear point, then push it back into the simulator.
+        </p>
+        <div class="form-grid compact-grid">
+          <label>
+            <span class="label-text">Observed time (min)</span>
+            <input id="observedTimeInput" type="number" min="0" step="1" placeholder="e.g. 20">
+          </label>
+
+          <label>
+            <span class="label-text">Observed wear (mm)</span>
+            <input id="observedWearInput" type="number" min="0" step="0.001" placeholder="e.g. 0.08">
+          </label>
+        </div>
+
+        <div class="action-row">
+          <button id="calibrateButton" type="button">Use estimated factor</button>
+          <span class="support mono" id="calibrationEstimate">No observed point yet.</span>
+        </div>
+
+        <div class="button-row">
+          <button id="exportCsvButton" type="button" class="secondary">Export current curve CSV</button>
+        </div>
+      </section>
+
+      <section class="panel visualization">
+        <div class="panel-head">
+          <p class="kicker">Simulation</p>
+          <h2>Wear trajectory</h2>
+        </div>
+
+        <div class="metric-grid">
+          <article class="metric">
+            <p>Predicted life</p>
+            <h3 id="lifeMetric">-</h3>
+            <span id="lifeSubMetric">-</span>
+          </article>
+
+          <article class="metric">
+            <p>Wear at elapsed time</p>
+            <h3 id="wearMetric">-</h3>
+            <span id="wearSubMetric">-</span>
+          </article>
+
+          <article class="metric">
+            <p>Condition intensity phi</p>
+            <h3 id="phiMetric">-</h3>
+            <span id="phiSubMetric">-</span>
+          </article>
+
+          <article class="metric">
+            <p>Transition time</p>
+            <h3 id="transitionMetric">-</h3>
+            <span id="transitionSubMetric">-</span>
+          </article>
+
+          <article class="metric">
+            <p>Late-stage factor</p>
+            <h3 id="lateFactorMetric">-</h3>
+            <span id="lateFactorSubMetric">-</span>
+          </article>
+        </div>
+
+        <div class="chart-shell">
+          <svg id="curveChart" viewBox="0 0 900 430" role="img" aria-label="Predicted wear curve"></svg>
+        </div>
+
+        <div class="equation-grid">
+          <div class="equation-card">
+            <p>Condition law</p>
+            <code id="conditionEquation">-</code>
+          </div>
+          <div class="equation-card">
+            <p>Piecewise wear law</p>
+            <code id="wearEquation">-</code>
+          </div>
+        </div>
+
+        <p class="support" id="statusLine">-</p>
+      </section>
+
+      <aside class="panel research">
+        <div class="panel-head">
+          <p class="kicker">Research Basis</p>
+          <h2>Model snapshot</h2>
+        </div>
+
+        <div class="data-block">
+          <h3>Selected coefficients</h3>
+          <div id="coeffTable" class="data-table"></div>
+        </div>
+
+        <div class="data-block">
+          <h3>Fit evidence</h3>
+          <div id="evidenceTable" class="data-table"></div>
+        </div>
+
+        <div class="data-block">
+          <h3>Material late-stage factors</h3>
+          <ul id="materialList" class="clean-list"></ul>
+        </div>
+
+        <div class="data-block">
+          <h3>Notes</h3>
+          <ul id="notesList" class="clean-list"></ul>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <script>
+    window.__PHASE2_MODEL__ = {
+      "model_name": "phase2_bi_regime_milling_wear_law",
+      "equation_family": "piecewise_power_law",
+      "transition_wear_mm": 0.25,
+      "units": {
+        "wear": "mm",
+        "time": "minutes",
+        "speed": "rpm",
+        "feed": "mm/tooth",
+        "depth": "mm"
+      },
+      "selected_coefficients": {
+        "early_exponent": 0.64,
+        "late_exponent": 1.29,
+        "reference_speed_rpm": 1800.0,
+        "reference_feed_mm_tooth": 0.05,
+        "reference_depth_mm": 3.0,
+        "k_early": 0.018580943020527416,
+        "speed_exponent": 0.3599674808570783,
+        "feed_exponent": 3.9560126665030144,
+        "depth_exponent": 0.6880734972420561,
+        "amplitude_r2": 0.7679366531421956,
+        "late_stage_factor_by_material_family": {
+          "generic": 0.25,
+          "cast_iron": 0.1488,
+          "steel": 0.3994
+        }
+      },
+      "evidence": {
+        "nuaa_early_exponent_raw": 0.6346675198604554,
+        "phm_early_exponent_raw": 0.6471159036132794,
+        "nasa_late_exponent_raw": 1.2873022539938623,
+        "nuaa_early_rmse_mm": 0.021129073209075803,
+        "phm_early_rmse_mm": 0.013622547359905953,
+        "nasa_late_rmse_mm": 0.04376000521170236
+      },
+      "equations": {
+        "condition_intensity_phi": "(speed_rpm / 1800)^speed_exponent * (feed_mm_tooth / 0.05)^feed_exponent * (depth_mm / 3.0)^depth_exponent",
+        "early_regime": "wear_mm = initial_wear_mm + calibration_factor * k_early * phi * time_min^early_exponent",
+        "late_regime": "wear_mm = transition_wear_mm + calibration_factor * late_stage_factor * k_early * phi * (time_min - transition_time_min)^late_exponent"
+      },
+      "notes": [
+        "The early-stage law is calibrated on the NUAA orthogonal milling bundle.",
+        "PHM 2010 is used to verify that the early-stage exponent remains in the same range for another milling dataset.",
+        "NASA run-to-failure milling data is used to estimate the late-stage acceleration exponent and material-family acceleration ratios.",
+        "Use calibration_factor to adapt the absolute wear rate to a specific tool-workpiece pair before relying on absolute tool-life predictions."
+      ]
+    };
+  </script>
+  <script src="app.js"></script>
+</body>
+</html>
