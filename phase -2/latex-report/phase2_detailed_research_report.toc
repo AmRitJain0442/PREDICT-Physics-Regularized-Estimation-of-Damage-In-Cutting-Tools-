@@ -1,0 +1,50 @@
+\contentsline {section}{\numberline {1}Introduction}{4}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Research question}{4}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Artifacts reviewed}{5}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Contributions of this report}{5}{subsection.1.3}%
+\contentsline {section}{\numberline {2}Evidence Base and Dataset Role Assignment}{5}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Dataset roles}{5}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Why a multi-dataset regime design is justified}{6}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Primary source notes}{7}{subsection.2.3}%
+\contentsline {section}{\numberline {3}Data Preparation and Exploratory Framing}{8}{section.3}%
+\contentsline {subsection}{\numberline {3.1}NUAA preprocessing}{8}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}PHM 2010 preprocessing}{8}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}NASA preprocessing}{8}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Exploratory implications}{9}{subsection.3.4}%
+\contentsline {section}{\numberline {4}Modeling Strategy}{9}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Shared-exponent power law for regime identification}{9}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Candidate model check on NUAA}{9}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Condition-intensity law from NUAA amplitudes}{10}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Late-stage acceleration and material-family ratios}{10}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Final phase-2 piecewise equation}{11}{subsection.4.5}%
+\contentsline {subsection}{\numberline {4.6}Analytical inversion for threshold life}{11}{subsection.4.6}%
+\contentsline {subsection}{\numberline {4.7}Calibration from one measured point}{12}{subsection.4.7}%
+\contentsline {section}{\numberline {5}Main Results}{12}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Fitted exponents and selected operating coefficients}{12}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Early-regime evidence from NUAA and PHM}{14}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Late-regime evidence from NASA}{16}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Condition-law fit quality}{17}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}Bootstrap stability}{17}{subsection.5.5}%
+\contentsline {subsection}{\numberline {5.6}Material-family late-stage ratios}{18}{subsection.5.6}%
+\contentsline {section}{\numberline {6}Validation Against Alternative Predictors}{19}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Leave-one-experiment-out benchmark on NUAA}{19}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Interpretation of the benchmark}{20}{subsection.6.2}%
+\contentsline {section}{\numberline {7}Simulator Behavior and Engineering Interpretation}{21}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Baseline scenario}{21}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Sensitivity around the reference condition}{22}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Calibration workflow}{22}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}What the simulator should and should not be used for}{23}{subsection.7.4}%
+\contentsline {section}{\numberline {8}Limitations and Threats to Validity}{23}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Cross-dataset stitching is both a strength and a limit}{23}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}PHM contributes shape, not absolute minute scaling}{24}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}NASA contributes ratios more credibly than absolute amplitudes}{24}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.4}The generic late-stage factor is heuristic}{24}{subsection.8.4}%
+\contentsline {subsection}{\numberline {8.5}The speed exponent is the least identifiable parameter}{24}{subsection.8.5}%
+\contentsline {subsection}{\numberline {8.6}Bootstrap instability in NUAA should temper overconfidence}{24}{subsection.8.6}%
+\contentsline {section}{\numberline {9}Reproducibility, Artifacts, and Folder-Level Interpretation}{24}{section.9}%
+\contentsline {subsection}{\numberline {9.1}How the phase-2 folder fits together}{24}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}Recommended interpretation of the deliverable}{25}{subsection.9.2}%
+\contentsline {section}{\numberline {10}Conclusion}{25}{section.10}%
+\contentsline {section}{\numberline {A}Notation}{26}{appendix.A}%
+\contentsline {section}{\numberline {B}NUAA amplitude table used for the condition law}{26}{appendix.B}%
+\contentsline {section}{\numberline {C}Selected output inventory}{26}{appendix.C}%
