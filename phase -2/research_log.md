@@ -47,3 +47,23 @@ Primary generated record:
 
 - `outputs/lifetime_modeling/phase2_lifetime_model_report.md`
 - `outputs/lifetime_modeling/lifetime_model_run_log.md`
+
+## 2026-05-03, LaTeX Research Monograph
+
+Scope: consolidate the repository research into a clean, standalone LaTeX manuscript with the requested author list, detailed tables, embedded plots, and editable LaTeX/TikZ explainer diagrams.
+
+Actions recorded:
+
+- Re-read the top-level README, Phase 2 report artifacts, extended research report, lifetime model report, cross-dataset results, VMD summary, modeling summary, feature-selection notes, and interpretation outputs.
+- Created `phase -2/latex-research-book/predict_tool_life_research_book.tex` as a new 10pt report-style manuscript instead of overwriting the earlier Phase 2 LaTeX report.
+- Used the title "From Sensor Signatures to Survival Curves: A Physics-Regularized Digital Twin for Milling Tool Wear and Tool-Life Forecasting".
+- Added the requested authors: Amrit Lahari, Sukrit Agrawal, Pushkar Agrawal, and Amit Kumar Jain.
+- Added LaTeX tables for dataset roles, failure thresholds, cross-dataset metrics, exponent evidence, bootstrap uncertainty, life intervals, calibration holdout results, residual diagnostics, trained-model inversion metrics, AFT coefficients, risk matrix, artifact index, and equation summary.
+- Added TikZ diagrams for the research architecture, dataset evidence roles, piecewise wear schematic, lifetime extraction workflow, load-effect icons, decision logic, and next-step modeling roadmap.
+- Embedded generated plots from Phase 2, extended research, lifetime modeling, cross-dataset analysis, VMD, feature selection, and SHAP interpretation.
+- Compiled the manuscript with `pdflatex` and kept the source and final PDF as the committed deliverables.
+
+Primary generated record:
+
+- `latex-research-book/predict_tool_life_research_book.tex`
+- `latex-research-book/predict_tool_life_research_book.pdf`
