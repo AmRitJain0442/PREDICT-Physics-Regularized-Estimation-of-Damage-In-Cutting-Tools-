@@ -79,6 +79,20 @@ Generate the full Word report:
 .venv\Scripts\python.exe "phase -2\report_builder.py"
 ```
 
+Run the extended research layer:
+
+```bash
+.venv\Scripts\python.exe "phase -2\extended_research_analysis.py"
+```
+
+The extended layer rebuilds the core model, then adds:
+
+- NUAA condition-law coefficient bootstrapping
+- simulator life-interval propagation for low, baseline, and high load settings
+- NUAA multi-point early calibration holdout forecasts
+- residual diagnostics for the NUAA, PHM 2010, and NASA fits
+- a Markdown research report and run record under `outputs/extended_research/`
+
 Predict tool life:
 
 ```bash
@@ -123,3 +137,18 @@ The frontend includes:
 - Feed sensitivity is strong in the fitted data, while spindle-speed sensitivity is weaker and less identifiable because the NUAA speed range is narrow.
 - PHM 2010 was used to confirm the early wear exponent, not to refit the condition exponents.
 - NASA was used to estimate late-stage acceleration, not to transfer absolute wear-rate constants across materials without calibration.
+
+## Extended Research Outputs
+
+After running `extended_research_analysis.py`, inspect:
+
+- `outputs/extended_research/phase2_extended_research_report.md`
+- `outputs/extended_research/extension_run_record.md`
+- `outputs/extended_research/condition_law_bootstrap_summary.csv`
+- `outputs/extended_research/life_uncertainty_summary.csv`
+- `outputs/extended_research/nuaa_calibration_summary.csv`
+- `outputs/extended_research/residual_summary.csv`
+- `plots/extended_research/condition_coefficient_bootstrap.png`
+- `plots/extended_research/life_prediction_intervals.png`
+- `plots/extended_research/nuaa_calibration_forecast.png`
+- `plots/extended_research/residual_diagnostics.png`

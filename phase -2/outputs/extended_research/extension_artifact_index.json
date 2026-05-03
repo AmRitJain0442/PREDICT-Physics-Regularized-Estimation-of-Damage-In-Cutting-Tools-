@@ -1,0 +1,10 @@
+{
+  "generated_at": "2026-05-03T09:58:04+05:30",
+  "bootstrap_draws": 500,
+  "artifacts": {
+    "report": "phase -2\\outputs\\extended_research\\phase2_extended_research_report.md",
+    "run_record": "phase -2\\outputs\\extended_research\\extension_run_record.md",
+    "plots_dir": "phase -2\\plots\\extended_research",
+    "outputs_dir": "phase -2\\outputs\\extended_research"
+  }
+}

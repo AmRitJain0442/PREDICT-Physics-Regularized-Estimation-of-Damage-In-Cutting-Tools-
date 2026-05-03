@@ -23,6 +23,10 @@
   https://www.nature.com/articles/s41597-025-04923-y
 - Sensors 2023 regression benchmark paper for milling tool-life estimation:
   https://doi.org/10.3390/s23239346
+- Scientific Data 2025 QIT-CEMC full-life coated end-milling cutter wear dataset:
+  https://www.nature.com/articles/s41597-024-04345-2
+- PHM conference review paper covering PHM2010 milling cutter regression usage:
+  https://papers.phmsociety.org/index.php/phmconf/article/download/462/phmc_18_462
 
 ## Research Notes
 
@@ -30,3 +34,4 @@
 - The most defensible phase-2 move was to use the local datasets first, then use web research mainly to identify expansion candidates and to confirm that newer open milling datasets now exist.
 - The resulting model is intentionally structured around regime behavior:
   early wear from NUAA/PHM, accelerated wear from NASA.
+- The extended research pass adds uncertainty propagation and early-calibration diagnostics. It still does not directly ingest the 2025 external datasets because the current repository does not include those raw files and both are large enough to deserve a controlled data-ingestion plan.
