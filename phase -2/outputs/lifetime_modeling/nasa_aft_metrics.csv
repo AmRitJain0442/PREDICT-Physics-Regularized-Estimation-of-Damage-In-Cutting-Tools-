@@ -1,0 +1,6 @@
+metric,value
+event_mae_min,2.5498074378638935
+event_rmse_min,3.1543868423842913
+event_r2,0.9688753182786329
+sigma,0.245945936826391
+negative_log_likelihood,43.6327455689783

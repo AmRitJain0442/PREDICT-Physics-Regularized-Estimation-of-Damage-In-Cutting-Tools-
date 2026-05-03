@@ -24,3 +24,26 @@ Primary generated record:
 - `outputs/extended_research/phase2_extended_research_report.md`
 
 Git integrity note: this work should be committed and pushed with truthful Git metadata. The research log and generated run record use the actual run date.
+
+## 2026-05-03, Lifetime Model Rework
+
+Scope: answer the explicit question of whether a lifetime equation was produced by training models and extracting model results. The previous pass did not do that fully; this pass adds a dedicated lifetime model-extraction pipeline.
+
+Actions recorded:
+
+- Extracted/read local paper context from the ML-driven research blueprint, NASA milling documentation, and the PHM public dataset inventory.
+- Reviewed external primary sources on QIT-CEMC, the 2025 tool-life milling dataset, PHM benchmark methodology, RUL uncertainty, Gaussian-process RUL, physics-informed Gaussian processes, spindle-power neural RUL, and DeepSurv-style survival modeling.
+- Built threshold-crossing labels for NUAA, NASA, and PHM2010.
+- Kept NUAA/NASA in minutes and PHM2010 in cut index to avoid mixing incompatible time bases.
+- Trained Ridge, RandomForest, GradientBoosting, GaussianProcess, and MLP wear-trajectory models on NUAA with leave-one-experiment-out evaluation.
+- Inverted trained wear models into threshold-crossing lifetime estimates.
+- Fit a censored log-normal accelerated-failure-time equation to NUAA life labels.
+- Bootstrapped the NUAA AFT equation coefficients.
+- Extracted a Taylor-like lifetime equation from the selected trained ML response surface.
+- Fit a separate material-aware NASA AFT model because NASA feed units and material families are not directly interchangeable with NUAA.
+- Recorded a negative modeling result: the lowest wear-RMSE model is not the best lifetime model after threshold inversion.
+
+Primary generated record:
+
+- `outputs/lifetime_modeling/phase2_lifetime_model_report.md`
+- `outputs/lifetime_modeling/lifetime_model_run_log.md`

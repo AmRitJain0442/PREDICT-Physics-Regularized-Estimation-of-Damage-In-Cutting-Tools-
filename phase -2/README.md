@@ -93,6 +93,14 @@ The extended layer rebuilds the core model, then adds:
 - residual diagnostics for the NUAA, PHM 2010, and NASA fits
 - a Markdown research report and run record under `outputs/extended_research/`
 
+Run the dedicated lifetime model-extraction layer:
+
+```bash
+.venv\Scripts\python.exe "phase -2\lifetime_model_extraction.py"
+```
+
+The lifetime layer builds threshold-crossing labels, trains NUAA wear-trajectory models, inverts trained models into tool-life surfaces, fits censored accelerated-failure-time equations, and records machining/PHM/biology survival-method transfer notes.
+
 Predict tool life:
 
 ```bash
@@ -152,3 +160,15 @@ After running `extended_research_analysis.py`, inspect:
 - `plots/extended_research/life_prediction_intervals.png`
 - `plots/extended_research/nuaa_calibration_forecast.png`
 - `plots/extended_research/residual_diagnostics.png`
+
+Lifetime-model outputs:
+
+- `outputs/lifetime_modeling/phase2_lifetime_model_report.md`
+- `outputs/lifetime_modeling/lifetime_model_run_log.md`
+- `outputs/lifetime_modeling/nuaa_wear_model_metrics.csv`
+- `outputs/lifetime_modeling/nuaa_aft_coefficients.csv`
+- `outputs/lifetime_modeling/ml_extracted_life_equation.csv`
+- `outputs/lifetime_modeling/literature_method_transfer_matrix.csv`
+- `plots/lifetime_modeling/nuaa_wear_life_model_benchmark.png`
+- `plots/lifetime_modeling/nuaa_life_equation_comparison.png`
+- `plots/lifetime_modeling/ml_life_surface_heatmap.png`

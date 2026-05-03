@@ -27,6 +27,18 @@
   https://www.nature.com/articles/s41597-024-04345-2
 - PHM conference review paper covering PHM2010 milling cutter regression usage:
   https://papers.phmsociety.org/index.php/phmconf/article/download/462/phmc_18_462
+- PHM Society 2013 paper on RUL uncertainty:
+  https://papers.phmsociety.org/index.php/phmconf/article/view/2263
+- PHM Society 2022 paper on Gaussian-process RUL:
+  https://papers.phmsociety.org/index.php/phmconf/article/view/3220
+- DeepSurv survival-analysis paper:
+  https://arxiv.org/abs/1606.00931
+- Physics-informed Gaussian-process tool-wear paper:
+  https://pubmed.ncbi.nlm.nih.gov/37770369/
+- Neural-network spindle-power tool-life paper:
+  https://impact.ornl.gov/en/publications/tool-life-predictions-in-milling-using-spindle-power-with-the-neu
+- PI-KAF physics-informed interpretable tool-wear monitoring paper:
+  https://www.sciencedirect.com/science/article/abs/pii/S0278612525002833
 
 ## Research Notes
 
@@ -35,3 +47,4 @@
 - The resulting model is intentionally structured around regime behavior:
   early wear from NUAA/PHM, accelerated wear from NASA.
 - The extended research pass adds uncertainty propagation and early-calibration diagnostics. It still does not directly ingest the 2025 external datasets because the current repository does not include those raw files and both are large enough to deserve a controlled data-ingestion plan.
+- The lifetime model-extraction pass adds a survival-analysis perspective from biomedical time-to-event modeling, trains NUAA wear models, inverts trained models into life estimates, and fits censored accelerated-failure-time equations.
