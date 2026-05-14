@@ -1,0 +1,40 @@
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Research architecture followed in the repository. The workflow separates signal evidence, physics-regularized equation building, grouped validation, and survival-aware life estimation.}}{3}{figure.caption.5}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces The datasets act like complementary evidence sources. NUAA and PHM2010 constrain the early regime, while NASA constrains late acceleration and sensor signatures.}}{4}{figure.caption.7}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Wear distributions across local datasets. The different ranges motivate dataset-specific thresholds and role-specific modeling rather than direct pooling.}}{5}{figure.caption.9}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces VMD separates broadband machining signals into mode-specific frequency content before feature extraction.}}{7}{figure.caption.11}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Frequency-mode features provide stronger individual wear associations than the best raw features in this NASA analysis.}}{7}{figure.caption.12}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Selected and interpreted features emphasize VMD-derived vibration, acoustic-emission, and spindle-current information.}}{8}{figure.caption.14}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces SHAP summary plot for the NASA modeling pass. High-impact features include VMD center-frequency, entropy, and kurtosis terms.}}{9}{figure.caption.15}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Cross-dataset baselines and NUAA process-condition sensitivity.}}{10}{figure.caption.17}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Failure-marker summaries across datasets. The plots support the use of energy, dispersion, crest, and modal frequency indicators as health signals.}}{11}{figure.caption.18}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Schematic of the piecewise wear law. The transition wear is \(V\!B_{\mathrm {tr}}=0.25~\mathrm {mm}\); early and late exponents are learned from different evidence sources.}}{12}{figure.caption.19}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces The final exponents are grounded in role-specific fits rather than a single pooled curve.}}{13}{figure.caption.21}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Feed dominates the local life sensitivity, while speed and depth remain less stable because of narrower design variation and collinearity.}}{14}{figure.caption.22}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces NASA late-stage material behavior. Steel shows a stronger late-stage wear factor than cast iron in the local model.}}{14}{figure.caption.23}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Bootstrap distributions for condition-law coefficients. Feed is the most consistently identified operating variable in the local design.}}{15}{figure.caption.25}%
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Load changes produce large predicted life changes; the high-load condition roughly halves baseline life in the bootstrap median.}}{16}{figure.caption.27}%
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Calibration forecast diagnostic. Short-window calibration can overcorrect and worsen holdout forecasts in the local NUAA experiment set.}}{17}{figure.caption.29}%
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Residual diagnostics across datasets. The NASA tail remains the hardest local regime.}}{17}{figure.caption.31}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Lifetime extraction workflow. The repository trains wear models, inverts them into crossing times, and compares them with survival-style equations.}}{18}{figure.caption.32}%
+\contentsline {figure}{\numberline {7.2}{\ignorespaces Wear-model inversion changes the model-selection problem. Smoothness near the threshold matters.}}{19}{figure.caption.35}%
+\contentsline {figure}{\numberline {7.3}{\ignorespaces NUAA AFT bootstrap uncertainty. Sparse events and censoring make speed and depth effects weakly identified.}}{19}{figure.caption.37}%
+\contentsline {figure}{\numberline {7.4}{\ignorespaces ML-inverted NUAA life surface. The surface is useful for scenario ranking but must be interpreted through the design limits of the training data.}}{20}{figure.caption.38}%
+\contentsline {figure}{\numberline {7.5}{\ignorespaces NASA material-aware AFT predictions. The high \(R^2\) is promising but should be interpreted with the small case count and fixed-speed design in mind.}}{21}{figure.caption.40}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {8.1}{\ignorespaces Example simulated wear curves. The piecewise law produces slow early growth followed by late acceleration.}}{22}{figure.caption.41}%
+\contentsline {figure}{\numberline {8.2}{\ignorespaces Load-effect icon comparison derived from bootstrap median life intervals. Higher feed/depth/speed compress predicted life.}}{23}{figure.caption.42}%
+\contentsline {figure}{\numberline {8.3}{\ignorespaces Decision logic implied by the research. The simulator should combine physics-based wear trajectory estimates with sensor health markers.}}{23}{figure.caption.43}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {11.1}{\ignorespaces Recommended next modeling roadmap. The highest-value next work is structured dataset ingestion and survival-aware calibration, not simply adding more regressors.}}{27}{figure.caption.45}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }

@@ -1,0 +1,51 @@
+\contentsline {chapter}{Abstract}{1}{chapter*.4}%
+\contentsline {chapter}{\numberline {1}Research Question and Contributions}{2}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Problem}{2}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Main Contributions}{2}{section.1.2}%
+\contentsline {chapter}{\numberline {2}Data Sources and Evidence Roles}{4}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Dataset Inventory}{4}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Data Role Diagram}{4}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Failure Thresholds}{5}{section.2.3}%
+\contentsline {chapter}{\numberline {3}Feature Engineering and Frequency Evidence}{6}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Feature Families}{6}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Variational Mode Decomposition}{6}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Feature Selection and Interpretation}{6}{section.3.3}%
+\contentsline {chapter}{\numberline {4}Cross-Dataset Baselines}{10}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Regression and Failure Classification}{10}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Per-Dataset Health Markers}{10}{section.4.2}%
+\contentsline {chapter}{\numberline {5}Piecewise Physics-Regularized Wear Law}{12}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Why a Piecewise Law}{12}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Model Definition}{12}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Evidence for Exponents}{13}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Condition Law}{13}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Material Effects}{14}{section.5.5}%
+\contentsline {chapter}{\numberline {6}Uncertainty, Calibration, and Residuals}{15}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Bootstrap Coefficient Stability}{15}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Life Prediction Intervals}{16}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Early Calibration Result}{16}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Residual Diagnostics}{16}{section.6.4}%
+\contentsline {chapter}{\numberline {7}Lifetime Modeling by Training and Inverting Models}{18}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Why Wear Accuracy Is Not Enough}{18}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Threshold-Crossing Labels}{18}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Trained Wear Models and Inverted Life}{18}{section.7.3}%
+\contentsline {section}{\numberline {7.4}Censored AFT Equation}{19}{section.7.4}%
+\contentsline {section}{\numberline {7.5}ML-Inverted Life Surface}{20}{section.7.5}%
+\contentsline {section}{\numberline {7.6}Direct Observed-Life Equation}{20}{section.7.6}%
+\contentsline {section}{\numberline {7.7}NASA Material-Aware AFT}{20}{section.7.7}%
+\contentsline {chapter}{\numberline {8}Simulator and Digital-Twin Interpretation}{22}{chapter.8}%
+\contentsline {section}{\numberline {8.1}From Equation to Simulator}{22}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Workload and Load-Effect Icons}{22}{section.8.2}%
+\contentsline {section}{\numberline {8.3}Practical Decision Logic}{22}{section.8.3}%
+\contentsline {chapter}{\numberline {9}External Research Context}{24}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Why Biology and Survival Modeling Matter}{24}{section.9.1}%
+\contentsline {section}{\numberline {9.2}Literature Positioning}{24}{section.9.2}%
+\contentsline {chapter}{\numberline {10}Limitations and Research Risk}{25}{chapter.10}%
+\contentsline {section}{\numberline {10.1}Identified Limitations}{25}{section.10.1}%
+\contentsline {section}{\numberline {10.2}Risk Matrix}{25}{section.10.2}%
+\contentsline {chapter}{\numberline {11}Recommended Next Experiments}{27}{chapter.11}%
+\contentsline {section}{\numberline {11.1}Controlled Data Expansion}{27}{section.11.1}%
+\contentsline {section}{\numberline {11.2}Modeling Roadmap}{27}{section.11.2}%
+\contentsline {section}{\numberline {11.3}Concrete Experiments}{27}{section.11.3}%
+\contentsline {chapter}{\numberline {12}Conclusion}{28}{chapter.12}%
+\contentsline {chapter}{\numberline {A}Generated Artifact Index}{29}{appendix.A}%
+\contentsline {chapter}{\numberline {B}Equation Summary}{30}{appendix.B}%

@@ -1,0 +1,32 @@
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {2.1}{\ignorespaces Primary datasets and their research roles.}}{4}{table.caption.6}%
+\contentsline {table}{\numberline {2.2}{\ignorespaces Dataset-specific tool-health failure labels used in the cross-dataset research pipeline.}}{5}{table.caption.8}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {3.1}{\ignorespaces Feature families and interpretation.}}{6}{table.caption.10}%
+\contentsline {table}{\numberline {3.2}{\ignorespaces Top VMD features by absolute correlation with NASA flank wear.}}{7}{table.caption.13}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {4.1}{\ignorespaces Cross-dataset wear regression and failure classification results.}}{10}{table.caption.16}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {5.1}{\ignorespaces Evidence used to select the Phase 2 exponents.}}{13}{table.caption.20}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {6.1}{\ignorespaces Bootstrap coefficient summary for the NUAA condition law.}}{15}{table.caption.24}%
+\contentsline {table}{\numberline {6.2}{\ignorespaces Bootstrap life prediction intervals.}}{16}{table.caption.26}%
+\contentsline {table}{\numberline {6.3}{\ignorespaces NUAA early-window calibration holdout. Lower RMSE is better.}}{16}{table.caption.28}%
+\contentsline {table}{\numberline {6.4}{\ignorespaces Residual diagnostics for the Phase 2 equation.}}{17}{table.caption.30}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {7.1}{\ignorespaces Threshold-crossing life labels.}}{18}{table.caption.33}%
+\contentsline {table}{\numberline {7.2}{\ignorespaces NUAA trained wear models and inverted event-life performance.}}{19}{table.caption.34}%
+\contentsline {table}{\numberline {7.3}{\ignorespaces NUAA AFT bootstrap coefficients.}}{19}{table.caption.36}%
+\contentsline {table}{\numberline {7.4}{\ignorespaces NASA material-aware AFT model summary.}}{20}{table.caption.39}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {9.1}{\ignorespaces External literature themes and how they influence this project.}}{24}{table.9.1}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {10.1}{\ignorespaces Research risk matrix.}}{26}{table.caption.44}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {A.1}{\ignorespaces Key local artifacts used in this monograph.}}{29}{table.A.1}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {B.1}{\ignorespaces Main equations produced by the research.}}{30}{table.caption.46}%

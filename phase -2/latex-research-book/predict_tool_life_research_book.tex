@@ -1,9 +1,9 @@
-\documentclass[10pt,a4paper]{report}
+\documentclass[11pt,a4paper]{article}
 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
-\usepackage[a4paper,margin=0.82in]{geometry}
+\usepackage[a4paper,margin=0.95in,top=0.95in,bottom=1.0in]{geometry}
 \usepackage{microtype}
 \usepackage{setspace}
 \usepackage{amsmath,amssymb}
@@ -38,20 +38,40 @@
   urlcolor=blue!55!black,
   citecolor=teal!55!black,
   pdftitle={From Sensor Signatures to Survival Curves},
-  pdfauthor={Amrit Lahari, Sukrit Agrawal, Pushkar Agrawal, Amit Kumar Jain},
+  pdfauthor={Amrit Lahari, Sukrit Agarwal, Pushkar Agrawal, Amit Kumar Jain},
   pdfsubject={Physics-regularized tool wear and tool-life modeling}
 }
 
 \setstretch{1.06}
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{0.48em}
-\setlist[itemize]{leftmargin=1.4em,itemsep=0.2em,topsep=0.2em}
-\setlist[enumerate]{leftmargin=1.6em,itemsep=0.2em,topsep=0.2em}
+\setlength{\parskip}{0.35em}
+\setlist[itemize]{leftmargin=1.4em,itemsep=0.18em,topsep=0.18em}
+\setlist[enumerate]{leftmargin=1.6em,itemsep=0.18em,topsep=0.18em}
 \setlength{\headheight}{13pt}
 \pagestyle{fancy}
 \fancyhf{}
 \lhead{From Sensor Signatures to Survival Curves}
 \rhead{\thepage}
+
+% --- float placement tuning to reduce empty space on pages ---
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\bottomfraction}{0.90}
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\floatpagefraction}{0.92}
+\renewcommand{\dbltopfraction}{0.95}
+\renewcommand{\dblfloatpagefraction}{0.92}
+\setcounter{topnumber}{4}
+\setcounter{bottomnumber}{3}
+\setcounter{totalnumber}{6}
+\setcounter{dbltopnumber}{4}
+\setlength{\textfloatsep}{8pt plus 2pt minus 2pt}
+\setlength{\floatsep}{6pt plus 2pt minus 2pt}
+\setlength{\intextsep}{8pt plus 2pt minus 2pt}
+\setlength{\dbltextfloatsep}{8pt plus 2pt minus 2pt}
+\setlength{\abovecaptionskip}{4pt}
+\setlength{\belowcaptionskip}{2pt}
+\captionsetup{font=small,labelfont=bf,skip=4pt}
+\flushbottom
 
 \definecolor{ink}{HTML}{172026}
 \definecolor{muted}{HTML}{5C6A73}
@@ -80,71 +100,82 @@
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 \newcolumntype{R}{>{\raggedleft\arraybackslash}p{1.35cm}}
 
-\begin{document}
-\hypersetup{pageanchor=false}
+\title{\bfseries From Sensor Signatures to Survival Curves\\[0.25em]
+  \large\itshape A Physics-Regularized Digital Twin for Milling Tool Wear and Tool-Life Forecasting}
+\author{%
+  \large Amrit Lahari \quad Sukrit Agarwal \quad Pushkar Agrawal \\[0.4em]
+  \normalsize\itshape Supervised by\ \ \large\bfseries Dr.~Amit Kumar Jain}
+\date{May 2026}
 
+\begin{document}
+
+% =====================================================================
+%  SOP COVER PAGE
+% =====================================================================
 \begin{titlepage}
+  \thispagestyle{empty}
   \centering
-  \vspace*{0.75cm}
-  {\Large\scshape Research Monograph\par}
+  \vspace*{0.5cm}
+  {\Large\bfseries Study Oriented Project (SOP) Report\par}
+  \vspace{1.4cm}
+  {\Large\itshape ``From Sensor Signatures to Survival Curves:\\[0.25em]
+  A Physics-Regularized Digital Twin for Milling Tool\\[0.15em]
+  Wear and Tool-Life Forecasting''\par}
+  \vspace{1.4cm}
+
+  {\large\bfseries Submitted by\par}
+  \vspace{0.45cm}
+  \renewcommand{\arraystretch}{1.35}
+  \begin{tabular}{|c|p{4.4cm}|p{3.3cm}|p{5.4cm}|}
+    \hline
+    \textbf{S.No.} & \textbf{Full Name} & \textbf{Student ID} & \textbf{Official Email} \\
+    \hline
+    1 & Amrit Lahari    & 2023A4PS0442P & f20230442@pilani.bits-pilani.ac.in \\
+    \hline
+    2 & Sukrit Agarwal  & 2023A4PS0431P & f2023043@pilani.bits-pilani.ac.in \\
+    \hline
+    3 & Pushkar Agrawal & 2023A4PS0425P & f20230425@pilani.bits-pilani.ac.in \\
+    \hline
+  \end{tabular}
+  \renewcommand{\arraystretch}{1.0}
+
   \vspace{1.0cm}
-  {\huge\bfseries From Sensor Signatures to Survival Curves\par}
-  \vspace{0.35cm}
-  {\Large\bfseries A Physics-Regularized Digital Twin for Milling Tool Wear and Tool-Life Forecasting\par}
-  \vspace{1.2cm}
-  {\large Amrit Lahari \quad Sukrit Agrawal \quad Pushkar Agrawal \quad Amit Kumar Jain\par}
+  \begin{tabular}{|p{4.0cm}|p{4.4cm}|p{3.0cm}|p{3.0cm}|}
+    \hline
+    \textbf{Semester \& Year} & \textbf{Program and Department} & \textbf{Project Start Date} & \textbf{Project End Date} \\
+    \hline
+    2nd Semester; 3rd Year & B.E.~Mechanical Engineering, Department of Mechanical Engineering & 06/January/2026 & 01/May/2026 \\
+    \hline
+  \end{tabular}
+
+  \vspace{1.0cm}
+  {\large\bfseries Supervisor\par}
+  \vspace{0.25cm}
+  {\large Dr.~Amit Kumar Jain\par}
+  {\small\itshape Department of Mechanical Engineering\par}
+
   \vfill
-  \begin{tikzpicture}[x=1cm,y=1cm]
-    \tikzset{
-      box/.style={rounded corners=3pt,draw=linegray,fill=panel,minimum width=3.2cm,minimum height=1.0cm,align=center,font=\small},
-      arrow/.style={-{Latex[length=2.4mm]},line width=0.7pt,draw=teal}
-    }
-    \node[box] (data) at (0,0) {Public milling\\datasets};
-    \node[box] (features) at (3.85,0) {Time, spectral,\\and VMD features};
-    \node[box] (physics) at (7.7,0) {Piecewise\\wear law};
-    \node[box] (life) at (11.55,0) {Survival-aware\\life forecast};
-    \draw[arrow] (data) -- (features);
-    \draw[arrow] (features) -- (physics);
-    \draw[arrow] (physics) -- (life);
-    \node[font=\scriptsize\color{muted},align=center] at (0,-1.05) {NUAA, PHM2010, NASA};
-    \node[font=\scriptsize\color{muted},align=center] at (3.85,-1.05) {force, vibration, AE, current};
-    \node[font=\scriptsize\color{muted},align=center] at (7.7,-1.05) {early and accelerated wear};
-    \node[font=\scriptsize\color{muted},align=center] at (11.55,-1.05) {threshold crossing, censoring};
-  \end{tikzpicture}
-  \vfill
-  {\large Local workspace: \code{sop-project}\par}
-  {\large Compiled from Phase 2, lifetime extraction, cross-dataset, VMD, and interpretability artifacts\par}
-  \vspace{0.8cm}
-  {\large May 2026\par}
+  {\large\bfseries Birla Institute of Technology and Science, Pilani\par}
+  \vspace{0.45cm}
+  {\large 01 / May / 2026\par}
 \end{titlepage}
 
-\hypersetup{pageanchor=true}
-\pagenumbering{roman}
-\tableofcontents
-\listoffigures
-\listoftables
-\clearpage
-\pagenumbering{arabic}
+% =====================================================================
+%  RESEARCH PAPER (Elsevier-style title block)
+% =====================================================================
+\maketitle
+\thispagestyle{empty}
 
-\chapter*{Abstract}
-\addcontentsline{toc}{chapter}{Abstract}
+\begin{abstract}\noindent
+We study \textbf{milling tool wear}, \textbf{tool-health failure detection}, and \textbf{threshold-crossing tool-life estimation} using three complementary public datasets: \dataset{NUAA}/\dataset{UniWear} orthogonal milling experiments, \dataset{PHM2010} cutter wear traces, and the \dataset{NASA} milling run-to-failure records. The objective is \emph{not only} to reduce pointwise wear error, but to build an interpretable, simulator-ready model that explains load effects, supports uncertainty bands, and connects signal-processing evidence to practical tool replacement. We propose a \textbf{physics-regularized piecewise wear law}: a sub-linear early regime with exponent \(\earlyexp=\mathbf{0.64}\) (verified on NUAA and PHM2010) and an accelerated late regime with exponent \(\lateexp=\mathbf{1.29}\) (extracted from NASA). A reference-point process-load function \(\phi(n,f_z,a_p)\) is fitted from NUAA, with \emph{feed emerging as the strongest driver}. We then train multiple wear regressors, invert them to threshold-crossing life estimates, and compare against censored accelerated-failure-time (AFT) equations. The best wear regressor (\textbf{Gradient Boosting}) does \emph{not} produce the best event-life forecast after inversion --- \textbf{optimizing wear RMSE is not equivalent to optimizing threshold-crossing life}. Frequency-domain evidence from \textbf{variational mode decomposition (VMD)} raises the strongest absolute correlation with wear from \(0.4806\) to \(\mathbf{0.5607}\). Bootstrap intervals, residual diagnostics, and early-window calibration tests describe where the model is stable and where it is under-identified. The result is a research-grade digital-twin prototype useful for scenario ranking and explanation, but requiring broader ingestion of newer full-life milling datasets before industrial deployment.
 
-This monograph consolidates the tool-wear research contained in the local \code{sop-project} repository into a clean, reproducible research narrative. The work studies milling tool wear, tool-health failure detection, and threshold-crossing tool-life estimation using three complementary public data sources: \dataset{NUAA}/\dataset{UniWear} orthogonal milling experiments, \dataset{PHM2010} cutter wear traces, and the \dataset{NASA} milling run-to-failure dataset. The research objective is not only to reduce pointwise wear error, but to build an interpretable and analytically useful model that can drive a simulator, explain load effects, support uncertainty bands, and connect signal-processing evidence to practical tool replacement decisions.
+\medskip
+\noindent\textbf{Keywords:}\ tool wear, tool-life forecasting, physics-regularized regression, variational mode decomposition, accelerated failure time, digital twin.
+\end{abstract}
 
-The central result is a physics-regularized piecewise wear law. The early regime is a sub-linear power law with exponent \(\earlyexp=0.64\), verified on NUAA and PHM2010. The late regime is an accelerated power law with exponent \(\lateexp=1.29\), extracted from NASA run-to-failure behavior. Around the reference cutting condition \((n, f_z, a_p)=(1800~\mathrm{rpm},0.05~\mathrm{mm/tooth},3.0~\mathrm{mm})\), the early amplitude is governed by
-\[
-\phii =
-\left(\frac{n}{1800}\right)^{0.359967}
-\left(\frac{f_z}{0.05}\right)^{3.956013}
-\left(\frac{a_p}{3.0}\right)^{0.688073},
-\]
-with feed emerging as the strongest load driver. The research then extends this equation into a lifetime-modeling study. Wear models were trained on NUAA, inverted into threshold-crossing life estimates, and compared with censored accelerated-failure-time equations. The best pointwise wear model, Gradient Boosting, did not produce the best event-life forecasts after inversion. This negative result is central: optimizing wear RMSE is not equivalent to optimizing threshold-crossing life.
+\section{Introduction}
 
-The report also records frequency-domain evidence from variational mode decomposition (VMD), feature-selection stability, SHAP interpretation, cross-dataset regression and classification metrics, residual diagnostics, bootstrap coefficient uncertainty, life prediction intervals, and early-window calibration tests. The final system should be interpreted as a research-grade digital twin prototype: it is useful for explanation, scenario ranking, and simulator behavior, but still needs broader ingestion of newer 2025 full-life milling datasets before it should be treated as an industrial replacement policy.
-
-\chapter{Research Question and Contributions}
-
-\section{Problem}
+\subsection{Problem}
 
 Milling tool wear is not a single regression problem. A tool can spend long periods in a slow early-wear regime, then enter an accelerated damage regime where a small amount of additional cutting time produces a large increase in flank wear. Datasets emphasize different parts of this story. Some datasets capture many process settings but short or synthetic lives. Others contain full run-to-failure trajectories but few cutting conditions. A useful research model therefore has to answer four questions at once:
 
@@ -157,19 +188,19 @@ Milling tool wear is not a single regression problem. A tool can spend long peri
 
 The local repository addresses these questions with a staged approach. The first stage extracts signal features and cross-dataset baselines. The second stage builds a piecewise wear equation. The third stage extends the equation with uncertainty and residual diagnostics. The fourth stage explicitly trains wear models, inverts them into lifetime predictions, and compares them with survival-style accelerated-failure-time models.
 
-\section{Main Contributions}
+\subsection{Main Contributions}
 
 \begin{itemize}
-  \item A dataset-role framework that uses NUAA for load-dependent early wear, PHM2010 for early-exponent transfer, and NASA for accelerated late-stage behavior.
-  \item A compact piecewise wear model with interpretable exponents and a process-load intensity function.
-  \item A cross-dataset health pipeline that evaluates wear regression and failure classification under grouped validation.
-  \item VMD-based frequency evidence showing that decomposed vibration, acoustic-emission, and spindle-current signatures improve the strongest absolute correlation with wear from \(0.4806\) to \(0.5607\).
-  \item A lifetime-model extraction pipeline that trains multiple wear models, inverts them into threshold-crossing estimates, and exposes the mismatch between wear RMSE and life accuracy.
-  \item Censored accelerated-failure-time equations for NUAA and material-aware NASA life behavior.
-  \item Bootstrap uncertainty, residual diagnostics, and calibration tests that describe where the current model is stable and where it remains under-identified.
+  \item \textbf{A dataset-role framework} that uses NUAA for load-dependent early wear, PHM2010 for early-exponent transfer, and NASA for accelerated late-stage behavior.
+  \item \textbf{A compact piecewise wear model} with interpretable exponents and a process-load intensity function.
+  \item \textbf{A cross-dataset health pipeline} that evaluates wear regression and failure classification under grouped validation.
+  \item \textbf{VMD-based frequency evidence} showing that decomposed vibration, acoustic-emission, and spindle-current signatures improve the strongest absolute correlation with wear from \(0.4806\) to \(\mathbf{0.5607}\).
+  \item \textbf{A lifetime-model extraction pipeline} that trains multiple wear models, inverts them into threshold-crossing estimates, and exposes the mismatch between wear RMSE and life accuracy.
+  \item \textbf{Censored accelerated-failure-time equations} for NUAA and material-aware NASA life behavior.
+  \item \textbf{Bootstrap uncertainty, residual diagnostics, and calibration tests} that describe where the current model is stable and where it remains under-identified.
 \end{itemize}
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
   \centering
   \begin{tikzpicture}[node distance=1.0cm and 1.15cm]
     \tikzset{
@@ -196,13 +227,58 @@ The local repository addresses these questions with a staged approach. The first
   \label{fig:research-architecture}
 \end{figure}
 
-\chapter{Data Sources and Evidence Roles}
+\section{Literature Review}
 
-\section{Dataset Inventory}
+\subsection{Why Biology and Survival Modeling Matter}
+
+The lifetime rework borrowed ideas from survival analysis, including accelerated-failure-time modeling and censoring. This is common outside machining, especially in medicine and biology, where time-to-event data are often censored because patients leave a study or an event has not occurred by the observation cutoff. Tool-life data have the same structure: a tool may not reach the failure threshold before the experiment ends. Treating those runs as ordinary non-events wastes information and biases the model.
+
+Deep survival models, Gaussian-process remaining-useful-life methods, physics-informed Gaussian processes, and physics-informed neural networks are useful pivots from adjacent domains. The repository does not blindly import these methods. Instead, it uses their modeling idea: preserve censoring, quantify uncertainty, and embed physical constraints where the data are too sparse to identify a purely black-box model.
+
+\subsection{Literature Positioning}
+
+\begin{longtable}{p{3.0cm}p{4.0cm}p{6.7cm}}
+  \caption{External literature themes and how they influence this project.}
+  \label{tab:literature-themes}\\
+  \toprule
+  Theme & Representative source type & Influence on this research \\
+  \midrule
+  \endfirsthead
+  \toprule
+  Theme & Representative source type & Influence on this research \\
+  \midrule
+  \endhead
+  PHM milling benchmarks & PHM competition and benchmark reviews & Motivates grouped validation, run-level splits, and caution about leakage across adjacent samples. \\
+  Public full-life milling datasets & 2025 \emph{Scientific Data} milling datasets & Identifies next ingestion targets for broader validation beyond the three local datasets. \\
+  Survival analysis & DeepSurv and accelerated-failure-time literature & Provides a principled vocabulary for event labels, right censoring, and life prediction under incomplete runs. \\
+  RUL uncertainty & PHM RUL uncertainty and Gaussian-process RUL work & Motivates prediction intervals and coefficient bootstrap rather than single deterministic life numbers. \\
+  Physics-informed learning & PINNs, physics-informed GP, and PI-KAF tool-wear monitoring & Supports the project choice to combine a mechanistic wear equation with statistical features and ML models. \\
+  Frequency decomposition & VMD and modal signal-processing literature & Supports modal features as interpretable signal evidence for wear progression. \\
+  \bottomrule
+\end{longtable}
+
+\subsection{Research Gaps}
+
+Synthesizing the literature against the available milling datasets exposes four gaps that motivate this work:
+
+\begin{enumerate}
+  \item \textbf{Dataset role mixing.} Most prior tool-wear studies pool heterogeneous datasets into a single regression, ignoring that some datasets (e.g.\ \dataset{NUAA}) sample many process conditions but truncate before failure, while others (e.g.\ \dataset{NASA}) follow tools to severe wear under a narrower design. Pooling without role separation conflates early and late wear physics.
+  \item \textbf{Missing piecewise physics priors.} Single-exponent power-law fits compromise between the slow early regime and the accelerated late regime, smoothing over the transition that matters most for replacement decisions.
+  \item \textbf{Wear-RMSE bias in life prediction.} Existing benchmarks rank models by pointwise wear error and assume the same ranking carries over to lifetime forecasting. The threshold-inversion step that converts wear models into life estimates is rarely tested under censoring.
+  \item \textbf{Sparse uncertainty quantification.} Bootstrap intervals, calibration tests, and survival-aware lifetime intervals are often missing from machining-monitoring papers, leaving deterministic single-number predictions that are poorly suited to industrial decision support.
+\end{enumerate}
+
+This work addresses all four gaps directly: a dataset-role framework, a piecewise wear law with regime-specific exponents, an inversion-aware lifetime evaluation, and bootstrap-based uncertainty propagation.
+
+\section{Methodology}
+
+\subsection{Data Sources and Evidence Roles}
+
+\subsubsection{Dataset Inventory}
 
 The repository contains or references three primary milling sources. They are not interchangeable, so the research assigns each dataset a specific inferential role. This is preferable to pooling everything into one opaque regression table, because the datasets differ in time base, sensors, process variables, material, failure threshold, and whether the experiment reaches severe wear.
 
-\begin{table}[H]
+\begin{table}[!htbp]
   \centering
   \caption{Primary datasets and their research roles.}
   \label{tab:dataset-roles}
@@ -218,9 +294,9 @@ The repository contains or references three primary milling sources. They are no
   \end{tabularx}
 \end{table}
 
-\section{Data Role Diagram}
+\subsubsection{Data Role Diagram}
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
   \centering
   \begin{tikzpicture}
     \tikzset{
@@ -244,11 +320,11 @@ The repository contains or references three primary milling sources. They are no
   \label{fig:dataset-role-diagram}
 \end{figure}
 
-\section{Failure Thresholds}
+\subsubsection{Failure Thresholds}
 
 The failure classification task uses dataset-specific thresholds because the measurement scale and experimental intent differ. The thresholds are not presented as universal industrial replacement limits; they are operational labels used to compare health markers within each dataset.
 
-\begin{table}[H]
+\begin{table}[!htbp]
   \centering
   \caption{Dataset-specific tool-health failure labels used in the cross-dataset research pipeline.}
   \label{tab:failure-thresholds}
@@ -264,20 +340,20 @@ The failure classification task uses dataset-specific thresholds because the mea
   \end{tabular}
 \end{table}
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
   \centering
   \includegraphics[width=0.85\textwidth]{dataset_wear_distribution.png}
   \caption{Wear distributions across local datasets. The different ranges motivate dataset-specific thresholds and role-specific modeling rather than direct pooling.}
   \label{fig:wear-distribution}
 \end{figure}
 
-\chapter{Feature Engineering and Frequency Evidence}
+\subsection{Feature Engineering and Frequency Evidence}
 
-\section{Feature Families}
+\subsubsection{Feature Families}
 
 The repository extracts compact signal features from time-domain and frequency-domain measurements. The shared feature vocabulary includes mean, standard deviation, root-mean-square, absolute mean, peak-to-peak range, skew-like statistics, kurtosis-like statistics, crest factor, quantiles, FFT energy, dominant FFT bin, FFT centroid, and spectral entropy. The NASA pipeline also includes VMD features computed over vibration, acoustic-emission, spindle-current AC, and spindle-current DC channels.
 
-\begin{table}[H]
+\begin{table}[!htbp]
   \centering
   \caption{Feature families and interpretation.}
   \label{tab:feature-families}
@@ -295,19 +371,18 @@ The repository extracts compact signal features from time-domain and frequency-d
   \end{tabularx}
 \end{table}
 
-\section{Variational Mode Decomposition}
+\subsubsection{Variational Mode Decomposition}
 
-The VMD pass decomposes NASA signals into \(K=5\) modes with \(\alpha=2000\) and \(\tau=0\). It produces 390 VMD features over sensors \code{vib\_spindle}, \code{vib\_table}, \code{AE\_table}, \code{AE\_spindle}, \code{smcAC}, and \code{smcDC}. The best raw feature correlation with wear was \(|r|=0.4806\). The best VMD feature reached \(|r|=0.5607\), an improvement of \(16.7\%\).
+The VMD pass decomposes NASA signals into \(K=5\) modes with \(\alpha=2000\) and \(\tau=0\). It produces \textbf{390 VMD features} over sensors \code{vib\_spindle}, \code{vib\_table}, \code{AE\_table}, \code{AE\_spindle}, \code{smcAC}, and \code{smcDC}. The best raw feature correlation with wear was \(|r|=0.4806\); the best VMD feature reached \(|r|=\mathbf{0.5607}\), an improvement of \(\mathbf{16.7\%}\).
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
   \centering
-  \begin{subfigure}{0.48\textwidth}
+  \begin{subfigure}{0.78\textwidth}
     \centering
     \includegraphics[width=\textwidth]{vmd_decomposition_example.png}
     \caption{Example decomposition}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}{0.48\textwidth}
+  \end{subfigure}\\[0.6em]
+  \begin{subfigure}{0.78\textwidth}
     \centering
     \includegraphics[width=\textwidth]{vmd_mode_spectra.png}
     \caption{Mode spectra}
@@ -316,24 +391,7 @@ The VMD pass decomposes NASA signals into \(K=5\) modes with \(\alpha=2000\) and
   \label{fig:vmd-decomposition}
 \end{figure}
 
-\begin{figure}[H]
-  \centering
-  \begin{subfigure}{0.48\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{vmd_correlation_top30.png}
-    \caption{Top VMD correlations}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}{0.48\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{vmd_vs_raw_comparison.png}
-    \caption{Raw versus VMD comparison}
-  \end{subfigure}
-  \caption{Frequency-mode features provide stronger individual wear associations than the best raw features in this NASA analysis.}
-  \label{fig:vmd-correlation}
-\end{figure}
-
-\begin{table}[H]
+\begin{table}[!htbp]
   \centering
   \caption{Top VMD features by absolute correlation with NASA flank wear.}
   \label{tab:top-vmd-features}
@@ -351,107 +409,24 @@ The VMD pass decomposes NASA signals into \(K=5\) modes with \(\alpha=2000\) and
   \end{tabularx}
 \end{table}
 
-\section{Feature Selection and Interpretation}
+\subsubsection{Feature Selection and Interpretation}
 
 Feature selection and SHAP analysis support the same broad conclusion: the useful predictors are not only raw amplitude measures. Wear information appears in mode frequency, entropy, kurtosis, and acoustic-emission center-frequency features.
 
-\begin{figure}[H]
-  \centering
-  \begin{subfigure}{0.48\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{selected_features.png}
-    \caption{Selected feature ranking}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}{0.48\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{shap_bar.png}
-    \caption{SHAP importance}
-  \end{subfigure}
-  \caption{Selected and interpreted features emphasize VMD-derived vibration, acoustic-emission, and spindle-current information.}
-  \label{fig:feature-interpretation}
-\end{figure}
-
-\begin{figure}[H]
+\begin{figure}[!htbp]
   \centering
   \includegraphics[width=0.82\textwidth]{shap_summary.png}
   \caption{SHAP summary plot for the NASA modeling pass. High-impact features include VMD center-frequency, entropy, and kurtosis terms.}
   \label{fig:shap-summary}
 \end{figure}
 
-\chapter{Cross-Dataset Baselines}
+\subsection{Piecewise Physics-Regularized Wear Law}
 
-\section{Regression and Failure Classification}
-
-The cross-dataset pipeline evaluates Ridge, Random Forest, and Gradient Boosting style models with grouped validation. Grouped validation is important because adjacent samples from the same cutter or case are not independent deployment tests. The goal is to estimate whether a model transfers to unseen experiments, not whether it can interpolate adjacent points within the same trajectory.
-
-\begin{table}[H]
-  \centering
-  \caption{Cross-dataset wear regression and failure classification results.}
-  \label{tab:cross-dataset-metrics}
-  \small
-  \begin{tabular}{lrrrrrr}
-    \toprule
-    Dataset & Samples & Groups & Features & Best regressor & RMSE & ROC-AUC \\
-    \midrule
-    PHM2010 & 945 & 3 & 105 & Random Forest & 0.0181 & 0.9671 \\
-    NASA & 146 & 16 & 94 & Ridge & 0.1728 & 0.9141 \\
-    UniWear & 649 & 12 & 46 & Ridge & 0.0475 & 0.7350 \\
-    \bottomrule
-  \end{tabular}
-\end{table}
-
-\begin{figure}[H]
-  \centering
-  \begin{subfigure}{0.48\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{cross_dataset_rmse_comparison.png}
-    \caption{Regression RMSE}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}{0.48\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{nuaa_life_heatmap.png}
-    \caption{NUAA life heatmap}
-  \end{subfigure}
-  \caption{Cross-dataset baselines and NUAA process-condition sensitivity.}
-  \label{fig:cross-dataset-baselines}
-\end{figure}
-
-\section{Per-Dataset Health Markers}
-
-The failure-marker plots show a practical theme: failure labels are usually preceded by increasing signal energy, dispersion, or impulsiveness, but the exact feature family varies by dataset. This is consistent with machining physics. Tool wear changes the chip formation process, contact geometry, friction, heat generation, and dynamic stiffness; the resulting evidence can appear in vibration, acoustic emission, force/current, or derived frequency features depending on available sensors.
-
-\begin{figure}[H]
-  \centering
-  \begin{subfigure}{0.32\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{phm2010_failure_markers.png}
-    \caption{PHM2010}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}{0.32\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{nasa_failure_markers.png}
-    \caption{NASA}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}{0.32\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{uniwear_failure_markers.png}
-    \caption{UniWear}
-  \end{subfigure}
-  \caption{Failure-marker summaries across datasets. The plots support the use of energy, dispersion, crest, and modal frequency indicators as health signals.}
-  \label{fig:failure-markers}
-\end{figure}
-
-\chapter{Piecewise Physics-Regularized Wear Law}
-
-\section{Why a Piecewise Law}
+\subsubsection{Why a Piecewise Law}
 
 The repository's Phase 2 model uses a piecewise curve rather than a single global polynomial or black-box regressor. The reason is physical and statistical. Early wear often grows sub-linearly after initial edge conditioning. Late wear accelerates when thermal, mechanical, and geometric effects amplify each other. A single smooth exponent must compromise between these regimes; the compromise can fit average wear but misrepresent lifetime near the failure threshold.
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
   \centering
   \begin{tikzpicture}[x=1cm,y=1cm]
     \draw[->,line width=0.65pt] (0,0) -- (10.2,0) node[right] {\small time};
@@ -470,7 +445,7 @@ The repository's Phase 2 model uses a piecewise curve rather than a single globa
   \label{fig:piecewise-schematic}
 \end{figure}
 
-\section{Model Definition}
+\subsubsection{Model Definition}
 
 Let \(t\) denote cutting time in minutes for the simulator-scale equation, and let \(\vbf\) denote the target failure threshold. The Phase 2 model defines an early amplitude law around a reference operating point:
 
@@ -504,9 +479,9 @@ k_{\mathrm{early}}\ \phii\ t^{0.64}, & \vb(t)<\vbtr,\\
 
 where \(k_{\mathrm{late}}(m)\) is adjusted by material family. The repository records the late-stage factors as generic \(0.25\), cast iron \(0.1488\), and steel \(0.3994\). These factors should be interpreted as local calibrated simulator coefficients, not universal constants.
 
-\section{Evidence for Exponents}
+\subsubsection{Evidence for Exponents}
 
-\begin{table}[H]
+\begin{table}[!htbp]
   \centering
   \caption{Evidence used to select the Phase 2 exponents.}
   \label{tab:exponent-evidence}
@@ -522,7 +497,7 @@ where \(k_{\mathrm{late}}(m)\) is adjusted by material family. The repository re
   \end{tabularx}
 \end{table}
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
   \centering
   \begin{subfigure}{0.32\textwidth}
     \centering
@@ -545,11 +520,11 @@ where \(k_{\mathrm{late}}(m)\) is adjusted by material family. The repository re
   \label{fig:regime-fits}
 \end{figure}
 
-\section{Condition Law}
+\subsubsection{Condition Law}
 
 The fitted process-condition intensity in \eqnref{eq:condition-intensity} is strongest in feed. That result is plausible: feed directly changes chip thickness and cutting load per tooth. Speed and depth also matter, but in the local NUAA design the feed exponent is much more stable and much larger than the others.
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
   \centering
   \begin{subfigure}{0.48\textwidth}
     \centering
@@ -566,24 +541,92 @@ The fitted process-condition intensity in \eqnref{eq:condition-intensity} is str
   \label{fig:condition-law}
 \end{figure}
 
-\section{Material Effects}
+\subsubsection{Material Effects}
 
 NASA supports late-stage material comparisons, especially between cast iron and steel. The Phase 2 simulator uses this evidence to avoid treating all late-stage wear as one material-independent acceleration process.
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
   \centering
   \includegraphics[width=0.78\textwidth]{nasa_late_stage_materials.png}
   \caption{NASA late-stage material behavior. Steel shows a stronger late-stage wear factor than cast iron in the local model.}
   \label{fig:nasa-materials}
 \end{figure}
 
-\chapter{Uncertainty, Calibration, and Residuals}
+\section{Results and Discussions}
 
-\section{Bootstrap Coefficient Stability}
+\subsection{Cross-Dataset Baselines}
+
+\subsubsection{Regression and Failure Classification}
+
+The cross-dataset pipeline evaluates Ridge, Random Forest, and Gradient Boosting style models with grouped validation. Grouped validation is important because adjacent samples from the same cutter or case are not independent deployment tests. The goal is to estimate whether a model transfers to unseen experiments, not whether it can interpolate adjacent points within the same trajectory.
+
+\begin{table}[!htbp]
+  \centering
+  \caption{Cross-dataset wear regression and failure classification results.}
+  \label{tab:cross-dataset-metrics}
+  \small
+  \begin{tabular}{lrrrrrr}
+    \toprule
+    Dataset & Samples & Groups & Features & Best regressor & RMSE & ROC-AUC \\
+    \midrule
+    PHM2010 & 945 & 3 & 105 & Random Forest & 0.0181 & 0.9671 \\
+    NASA & 146 & 16 & 94 & Ridge & 0.1728 & 0.9141 \\
+    UniWear & 649 & 12 & 46 & Ridge & 0.0475 & 0.7350 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{figure}[!htbp]
+  \centering
+  \begin{subfigure}{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{cross_dataset_rmse_comparison.png}
+    \caption{Regression RMSE}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{nuaa_life_heatmap.png}
+    \caption{NUAA life heatmap}
+  \end{subfigure}
+  \caption{Cross-dataset baselines and NUAA process-condition sensitivity.}
+  \label{fig:cross-dataset-baselines}
+\end{figure}
+
+\subsubsection{Per-Dataset Health Markers}
+
+The failure-marker plots show a practical theme: failure labels are usually preceded by increasing signal energy, dispersion, or impulsiveness, but the exact feature family varies by dataset. This is consistent with machining physics. Tool wear changes the chip formation process, contact geometry, friction, heat generation, and dynamic stiffness; the resulting evidence can appear in vibration, acoustic emission, force/current, or derived frequency features depending on available sensors.
+
+\begin{figure}[!htbp]
+  \centering
+  \begin{subfigure}{0.32\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{phm2010_failure_markers.png}
+    \caption{PHM2010}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}{0.32\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{nasa_failure_markers.png}
+    \caption{NASA}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}{0.32\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{uniwear_failure_markers.png}
+    \caption{UniWear}
+  \end{subfigure}
+  \caption{Failure-marker summaries across datasets. The plots support the use of energy, dispersion, crest, and modal frequency indicators as health signals.}
+  \label{fig:failure-markers}
+\end{figure}
+
+\subsection{Uncertainty, Calibration, and Residuals}
+
+\subsubsection{Bootstrap Coefficient Stability}
 
 The extended research pass bootstraps the NUAA condition law with valid-design filtering. This is important because small experimental designs can produce rank-deficient or unstable resamples. The bootstrap results show a stable feed exponent, while speed and depth remain more uncertain.
 
-\begin{table}[H]
+\begin{table}[!htbp]
   \centering
   \caption{Bootstrap coefficient summary for the NUAA condition law.}
   \label{tab:bootstrap-coefficients}
@@ -601,18 +644,18 @@ The extended research pass bootstraps the NUAA condition law with valid-design f
   \end{tabular}
 \end{table}
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
   \centering
   \includegraphics[width=0.82\textwidth]{condition_coefficient_bootstrap.png}
   \caption{Bootstrap distributions for condition-law coefficients. Feed is the most consistently identified operating variable in the local design.}
   \label{fig:bootstrap-coefficients}
 \end{figure}
 
-\section{Life Prediction Intervals}
+\subsubsection{Life Prediction Intervals}
 
-The bootstrap draws were propagated into low-load, baseline, and high-load life scenarios. The result gives a practical load comparison: the baseline median life is about 50.2 minutes, the low-load condition extends median life to about 103.6 minutes, and the high-load condition compresses median life to about 25.0 minutes.
+The bootstrap draws were propagated into low-load, baseline, and high-load life scenarios. The result gives a practical load comparison: the baseline median life is about \textbf{50.2 minutes}, the low-load condition extends median life to about \textbf{103.6 minutes}, and the high-load condition compresses median life to about \textbf{25.0 minutes}.
 
-\begin{table}[H]
+\begin{table}[!htbp]
   \centering
   \caption{Bootstrap life prediction intervals.}
   \label{tab:life-intervals}
@@ -628,7 +671,7 @@ The bootstrap draws were propagated into low-load, baseline, and high-load life 
   \end{tabular}
 \end{table}
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
   \centering
   \begin{subfigure}{0.48\textwidth}
     \centering
@@ -659,11 +702,11 @@ The bootstrap draws were propagated into low-load, baseline, and high-load life 
   \label{fig:life-intervals}
 \end{figure}
 
-\section{Early Calibration Result}
+\subsubsection{Early Calibration Result}
 
 The extended research pass tested whether early observations from each run could calibrate the global equation through a per-run multiplier. This is a reasonable idea: if the first few points indicate that a tool is wearing faster than expected, a calibrated forecast might improve the remaining trajectory. The local NUAA holdout result was negative. For the tested early cutoffs, calibrated forecasts had worse median holdout RMSE than the uncalibrated global model.
 
-\begin{table}[H]
+\begin{table}[!htbp]
   \centering
   \caption{NUAA early-window calibration holdout. Lower RMSE is better.}
   \label{tab:calibration-holdout}
@@ -681,18 +724,18 @@ The extended research pass tested whether early observations from each run could
 
 This result should stay in the paper because it prevents an overly optimistic simulator story. The current global model is more stable than short-window multiplicative recalibration. In future work, calibration should use a structured Bayesian update, monotonic constraints, or a state-space model instead of a free scalar multiplier.
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
   \centering
   \includegraphics[width=0.78\textwidth]{nuaa_calibration_forecast.png}
   \caption{Calibration forecast diagnostic. Short-window calibration can overcorrect and worsen holdout forecasts in the local NUAA experiment set.}
   \label{fig:nuaa-calibration}
 \end{figure}
 
-\section{Residual Diagnostics}
+\subsubsection{Residual Diagnostics}
 
 Residual diagnostics show that the piecewise equation is most accurate in PHM2010 and NUAA early regimes, and least accurate in NASA, where severe wear, material variation, and late-stage behavior are stronger.
 
-\begin{table}[H]
+\begin{table}[!htbp]
   \centering
   \caption{Residual diagnostics for the Phase 2 equation.}
   \label{tab:residual-diagnostics}
@@ -708,20 +751,20 @@ Residual diagnostics show that the piecewise equation is most accurate in PHM201
   \end{tabular}
 \end{table}
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
   \centering
   \includegraphics[width=0.82\textwidth]{residual_diagnostics.png}
   \caption{Residual diagnostics across datasets. The NASA tail remains the hardest local regime.}
   \label{fig:residual-diagnostics}
 \end{figure}
 
-\chapter{Lifetime Modeling by Training and Inverting Models}
+\subsection{Lifetime Modeling by Training and Inverting Models}
 
-\section{Why Wear Accuracy Is Not Enough}
+\subsubsection{Why Wear Accuracy Is Not Enough}
 
 The lifetime rework directly addressed whether tool life was estimated by training models and extracting results from those models. The answer is yes: NUAA wear models were trained, evaluated under leave-one-experiment-out validation, and inverted to estimate threshold-crossing life. The inversion step changes the target. A model can have low pointwise wear RMSE and still predict a poor crossing time if it is biased near the threshold.
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
   \centering
   \begin{tikzpicture}[node distance=0.95cm and 1.0cm]
     \tikzset{
@@ -745,11 +788,11 @@ The lifetime rework directly addressed whether tool life was estimated by traini
   \label{fig:lifetime-workflow}
 \end{figure}
 
-\section{Threshold-Crossing Labels}
+\subsubsection{Threshold-Crossing Labels}
 
 Life labels were built by finding when each run crossed a dataset-specific wear threshold. Uncrossed runs were treated as censored. The time units were not mixed: NUAA and NASA lives are in minutes, while PHM2010 uses cutter cut index because its native time base differs.
 
-\begin{table}[H]
+\begin{table}[!htbp]
   \centering
   \caption{Threshold-crossing life labels.}
   \label{tab:life-labels}
@@ -765,9 +808,9 @@ Life labels were built by finding when each run crossed a dataset-specific wear 
   \end{tabular}
 \end{table}
 
-\section{Trained Wear Models and Inverted Life}
+\subsubsection{Trained Wear Models and Inverted Life}
 
-\begin{table}[H]
+\begin{table}[!htbp]
   \centering
   \caption{NUAA trained wear models and inverted event-life performance.}
   \label{tab:wear-life-benchmark}
@@ -786,9 +829,9 @@ Life labels were built by finding when each run crossed a dataset-specific wear 
   \end{tabular}
 \end{table}
 
-The best pointwise wear model is Gradient Boosting, but its event-life MAE is worse than the Phase 2 equation and Ridge. This is a strong negative result. It says the lifetime problem cannot be judged only by \(\vb\) regression error. The selected model for extracting an interpretable life surface is Ridge because it is smoother and more reliable for inversion, even though it is not the lowest-RMSE wear model.
+The best pointwise wear model is \textbf{Gradient Boosting}, but its event-life MAE is \emph{worse} than the Phase 2 equation and Ridge. This is a \textbf{strong negative result}: the lifetime problem cannot be judged only by \(\vb\) regression error. The selected model for extracting an interpretable life surface is \textbf{Ridge} because it is smoother and more reliable for inversion, even though it is not the lowest-RMSE wear model.
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
   \centering
   \begin{subfigure}{0.48\textwidth}
     \centering
@@ -805,7 +848,7 @@ The best pointwise wear model is Gradient Boosting, but its event-life MAE is wo
   \label{fig:wear-life-benchmark}
 \end{figure}
 
-\section{Censored AFT Equation}
+\subsubsection{Censored AFT Equation}
 
 The NUAA censored accelerated-failure-time model is
 
@@ -820,7 +863,7 @@ T_{\min} =
 
 with \(\sigma=0.5291\) and negative log likelihood \(21.2365\). The AFT feed exponent is weaker than the Phase 2 condition-law feed exponent because it models sparse threshold-crossing events with censoring, not dense early wear amplitudes.
 
-\begin{table}[H]
+\begin{table}[!htbp]
   \centering
   \caption{NUAA AFT bootstrap coefficients.}
   \label{tab:aft-bootstrap}
@@ -838,14 +881,14 @@ with \(\sigma=0.5291\) and negative log likelihood \(21.2365\). The AFT feed exp
   \end{tabular}
 \end{table}
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
   \centering
   \includegraphics[width=0.78\textwidth]{nuaa_aft_coefficient_bootstrap.png}
   \caption{NUAA AFT bootstrap uncertainty. Sparse events and censoring make speed and depth effects weakly identified.}
   \label{fig:aft-bootstrap}
 \end{figure}
 
-\section{ML-Inverted Life Surface}
+\subsubsection{ML-Inverted Life Surface}
 
 The Ridge response surface was inverted over a grid of operating scenarios and then compressed into a Taylor-like equation:
 
@@ -860,14 +903,14 @@ T_{\min} =
 
 with surrogate log-space \(R^2=0.9800\) over 345 crossing scenarios. The high speed exponent should not be overinterpreted. It is a warning that the local speed range is narrow and speed is partly confounded with other load effects. The feed exponent is more consistent with the Phase 2 condition law and observed-life equation.
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
   \centering
   \includegraphics[width=0.8\textwidth]{ml_life_surface_heatmap.png}
   \caption{ML-inverted NUAA life surface. The surface is useful for scenario ranking but must be interpreted through the design limits of the training data.}
   \label{fig:ml-life-surface}
 \end{figure}
 
-\section{Direct Observed-Life Equation}
+\subsubsection{Direct Observed-Life Equation}
 
 Using only uncensored NUAA threshold crossings yields
 
@@ -882,11 +925,11 @@ T_{\min} =
 
 with log RMSE \(0.3784\). This equation is less robust because it discards censored runs. It is nevertheless useful as an independent check that feed has a strong negative effect on life.
 
-\section{NASA Material-Aware AFT}
+\subsubsection{NASA Material-Aware AFT}
 
 NASA is handled separately because its feed units, material families, fixed speed, and wear scale differ from NUAA. The material-aware AFT model includes feed, depth, material, and initial wear:
 
-\begin{table}[H]
+\begin{table}[!htbp]
   \centering
   \caption{NASA material-aware AFT model summary.}
   \label{tab:nasa-aft}
@@ -906,31 +949,31 @@ NASA is handled separately because its feed units, material families, fixed spee
 
 The NASA AFT fit has event MAE \(2.5498\), RMSE \(3.1544\), \(R^2=0.9689\), \(\sigma=0.2459\), and negative log likelihood \(43.6327\). Because all NASA runs cross the threshold in this local label set, the model is not a censored survival problem in the same way as NUAA, but it provides strong evidence for material and initial-wear effects.
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
   \centering
   \includegraphics[width=0.78\textwidth]{nasa_aft_life_model.png}
   \caption{NASA material-aware AFT predictions. The high \(R^2\) is promising but should be interpreted with the small case count and fixed-speed design in mind.}
   \label{fig:nasa-aft}
 \end{figure}
 
-\chapter{Simulator and Digital-Twin Interpretation}
+\subsection{Simulator and Digital-Twin Interpretation}
 
-\section{From Equation to Simulator}
+\subsubsection{From Equation to Simulator}
 
 The repository includes a simulator-oriented Phase 2 model and frontend artifacts. The core simulator behavior is driven by the piecewise law and the load-intensity function. The simulator should be understood as a digital twin prototype: it maps operating conditions to wear trajectories and life estimates, but its uncertainty bands and known failure modes should remain visible.
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
   \centering
   \includegraphics[width=0.78\textwidth]{simulation_example_curves.png}
   \caption{Example simulated wear curves. The piecewise law produces slow early growth followed by late acceleration.}
   \label{fig:simulation-curves}
 \end{figure}
 
-\section{Workload and Load-Effect Icons}
+\subsubsection{Workload and Load-Effect Icons}
 
 The operational story can be summarized with three load states. The icons below are intentionally simple LaTeX/TikZ marks rather than external artwork, so the document remains fully editable and portable.
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
   \centering
   \begin{tikzpicture}[node distance=0.8cm]
     \tikzset{
@@ -956,7 +999,7 @@ The operational story can be summarized with three load states. The icons below 
   \label{fig:load-icons}
 \end{figure}
 
-\section{Practical Decision Logic}
+\subsubsection{Practical Decision Logic}
 
 The current digital-twin logic should be used for scenario ranking and research exploration:
 
@@ -967,7 +1010,7 @@ The current digital-twin logic should be used for scenario ranking and research 
   \item Treat high-speed exponents and short-window calibrations carefully, because they are less stable in the local data.
 \end{enumerate}
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
   \centering
   \begin{tikzpicture}[node distance=0.9cm and 1.0cm]
     \tikzset{
@@ -992,39 +1035,9 @@ The current digital-twin logic should be used for scenario ranking and research 
   \label{fig:decision-logic}
 \end{figure}
 
-\chapter{External Research Context}
+\subsection{Limitations and Research Risk}
 
-\section{Why Biology and Survival Modeling Matter}
-
-The lifetime rework borrowed ideas from survival analysis, including accelerated-failure-time modeling and censoring. This is common outside machining, especially in medicine and biology, where time-to-event data are often censored because patients leave a study or an event has not occurred by the observation cutoff. Tool-life data have the same structure: a tool may not reach the failure threshold before the experiment ends. Treating those runs as ordinary non-events wastes information and biases the model.
-
-Deep survival models, Gaussian-process remaining-useful-life methods, physics-informed Gaussian processes, and physics-informed neural networks are useful pivots from adjacent domains. The repository does not blindly import these methods. Instead, it uses their modeling idea: preserve censoring, quantify uncertainty, and embed physical constraints where the data are too sparse to identify a purely black-box model.
-
-\section{Literature Positioning}
-
-\begin{longtable}{p{3.0cm}p{4.0cm}p{6.7cm}}
-  \caption{External literature themes and how they influence this project.}
-  \label{tab:literature-themes}\\
-  \toprule
-  Theme & Representative source type & Influence on this research \\
-  \midrule
-  \endfirsthead
-  \toprule
-  Theme & Representative source type & Influence on this research \\
-  \midrule
-  \endhead
-  PHM milling benchmarks & PHM competition and benchmark reviews & Motivates grouped validation, run-level splits, and caution about leakage across adjacent samples. \\
-  Public full-life milling datasets & 2025 Scientific Data milling datasets & Identifies next ingestion targets for broader validation beyond the three local datasets. \\
-  Survival analysis & DeepSurv and accelerated-failure-time literature & Provides a principled vocabulary for event labels, right censoring, and life prediction under incomplete runs. \\
-  RUL uncertainty & PHM RUL uncertainty and Gaussian-process RUL work & Motivates prediction intervals and coefficient bootstrap rather than single deterministic life numbers. \\
-  Physics-informed learning & PINNs, physics-informed GP, and PI-KAF tool-wear monitoring & Supports the project choice to combine a mechanistic wear equation with statistical features and ML models. \\
-  Frequency decomposition & VMD and modal signal-processing literature & Supports modal features as interpretable signal evidence for wear progression. \\
-  \bottomrule
-\end{longtable}
-
-\chapter{Limitations and Research Risk}
-
-\section{Identified Limitations}
+\subsubsection{Identified Limitations}
 
 \begin{enumerate}
   \item The speed exponent is unstable in bootstrap and extracted life equations because the local speed range is narrow and correlated with other design variables.
@@ -1035,9 +1048,9 @@ Deep survival models, Gaussian-process remaining-useful-life methods, physics-in
   \item The simulator is calibrated to the local datasets and should not be treated as an industrial replacement policy until validated on newer full-life milling datasets.
 \end{enumerate}
 
-\section{Risk Matrix}
+\subsubsection{Risk Matrix}
 
-\begin{table}[H]
+\begin{table}[!htbp]
   \centering
   \caption{Research risk matrix.}
   \label{tab:risk-matrix}
@@ -1056,9 +1069,11 @@ Deep survival models, Gaussian-process remaining-useful-life methods, physics-in
   \end{tabularx}
 \end{table}
 
-\chapter{Recommended Next Experiments}
+\section{Conclusion}
 
-\section{Controlled Data Expansion}
+\subsection{Recommended Next Experiments}
+
+\subsubsection{Controlled Data Expansion}
 
 The next research step is not to add more model classes first. It is to ingest broader full-life milling data under a strict provenance and validation plan. The 2025 QIT-CEMC and other open milling datasets listed in the research log are natural candidates. Each new dataset should be mapped into a common schema:
 
@@ -1070,9 +1085,9 @@ The next research step is not to add more model classes first. It is to ingest b
   \item event/censoring indicator at the chosen threshold.
 \end{itemize}
 
-\section{Modeling Roadmap}
+\subsubsection{Modeling Roadmap}
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
   \centering
   \begin{tikzpicture}[node distance=0.8cm and 0.85cm]
     \tikzset{
@@ -1099,7 +1114,7 @@ The next research step is not to add more model classes first. It is to ingest b
   \label{fig:roadmap}
 \end{figure}
 
-\section{Concrete Experiments}
+\subsubsection{Concrete Experiments}
 
 \begin{enumerate}
   \item Refit the Phase 2 law after adding at least one full-life 2025 milling dataset.
@@ -1110,15 +1125,15 @@ The next research step is not to add more model classes first. It is to ingest b
   \item Add uncertainty display to the simulator frontend so users see median and interval curves together.
 \end{enumerate}
 
-\chapter{Conclusion}
+\subsection{Closing Remarks}
 
-The repository now contains a coherent research program for milling tool wear and tool-life forecasting. The strongest technical result is not a single machine-learning score; it is the combination of interpretable physics, signal evidence, grouped validation, threshold inversion, and censoring-aware life modeling. The piecewise wear law explains why early and late data should not be forced into one undifferentiated fit. The VMD and SHAP analyses show which sensor signatures carry wear information. The lifetime extraction pass shows that training a model and inverting it into life is possible, but also that the best wear regressor is not necessarily the best life predictor.
+The repository now contains a coherent research program for milling tool wear and tool-life forecasting. The strongest technical result is \emph{not} a single machine-learning score; it is the combination of \textbf{interpretable physics, signal evidence, grouped validation, threshold inversion, and censoring-aware life modeling}. The piecewise wear law explains why early and late data should not be forced into one undifferentiated fit. The VMD and SHAP analyses show which sensor signatures carry wear information. The lifetime extraction pass shows that training a model and inverting it into life is possible, but also that \emph{the best wear regressor is not necessarily the best life predictor}.
 
-The practical interpretation is clear. Feed is the most reliable local load driver. Late-stage material behavior matters. Censoring must be modeled rather than ignored. Short-window scalar calibration is not yet dependable. The current digital twin is ready for research simulation, scenario ranking, and explainer visualizations, but it needs larger full-life validation before industrial deployment.
+The practical interpretation is clear. \textbf{Feed is the most reliable local load driver.} \textbf{Late-stage material behavior matters.} \textbf{Censoring must be modeled rather than ignored.} \textbf{Short-window scalar calibration is not yet dependable.} The current digital twin is ready for research simulation, scenario ranking, and explainer visualizations, but it needs larger full-life validation before industrial deployment.
 
 \appendix
 
-\chapter{Generated Artifact Index}
+\section{Generated Artifact Index}
 
 \footnotesize
 \begin{longtable}{p{3.2cm}p{6.2cm}p{4.8cm}}
@@ -1144,9 +1159,9 @@ The practical interpretation is clear. Feed is the most reliable local load driv
 \end{longtable}
 \normalsize
 
-\chapter{Equation Summary}
+\section{Equation Summary}
 
-\begin{table}[H]
+\begin{table}[!htbp]
   \centering
   \caption{Main equations produced by the research.}
   \label{tab:equation-summary}
@@ -1171,44 +1186,40 @@ The practical interpretation is clear. Feed is the most reliable local load driv
   \end{tabularx}
 \end{table}
 
-\begin{thebibliography}{99}
+\renewcommand{\refname}{References}
+\section*{References}
+\addcontentsline{toc}{section}{References}
 
-\bibitem{phm2010}
-PHM Society. PHM 2010 data challenge and milling cutter wear benchmark materials. Available through the PHM Society competition resources and related benchmark review material.
+\begingroup
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.4em}
 
-\bibitem{nasa-milling}
-NASA Prognostics Center of Excellence. Milling data set documentation and run-to-failure case records.
+Dragomiretskiy, K.\ and Zosso, D.\ (2014) `Variational mode decomposition', \emph{IEEE Transactions on Signal Processing}, 62(3), pp.~531--544.
 
-\bibitem{uniwear}
-UniWear / NUAA orthogonal milling bundle. Local dataset documentation and high-resolution milling wear records used in the repository.
+Jain, A.K.\ and Lad, B.K.\ (2020) `Prognosticating RULs while exploiting the future characteristics of operating profiles', \emph{Reliability Engineering and System Safety}, 202, 107031.
 
-\bibitem{qit-cemc}
-QIT-CEMC full-life coated end-milling cutter wear dataset. \emph{Scientific Data}, 2025.
+Katzman, J.L., Shaham, U., Cloninger, A., Bates, J., Jiang, T.\ and Kluger, Y.\ (2018) `DeepSurv: personalized treatment recommender system using a Cox proportional hazards deep neural network', \emph{BMC Medical Research Methodology}, 18(1), 24.
 
-\bibitem{piecuch2025}
-Piecuch and Zabinski. Open milling tool-failure dataset and benchmark context. \emph{Scientific Data}, 2025.
+Li, X., Lim, B.S., Zhou, J.H., Huang, S., Phua, S.J., Shaw, K.C.\ and Er, M.J.\ (2010) `Fuzzy neural network modelling for tool wear estimation in dry milling operation', in \emph{Proceedings of the Annual Conference of the Prognostics and Health Management Society} (PHM 2010 Data Challenge), San Diego, CA.
 
-\bibitem{sensors2023}
-Regression benchmark study for milling tool-life estimation. \emph{Sensors}, 2023.
+NASA Prognostics Center of Excellence (n.d.) \emph{Milling Data Set}. Available at: \url{https://www.nasa.gov/intelligent-systems-division/discovery-and-systems-health/pcoe/pcoe-data-set-repository/} (Accessed: April 2026).
 
-\bibitem{deep-surv}
-Katzman, J. L. et al. DeepSurv: personalized treatment recommender system using a Cox proportional hazards deep neural network. arXiv:1606.00931.
+Piecuch, G.\ and Zabinski, T.\ (2025) `Open milling tool-failure dataset and benchmark context', \emph{Scientific Data}, 12, pp.~1--14.
 
-\bibitem{pinngeneral}
-Raissi, M., Perdikaris, P., and Karniadakis, G. E. Physics-informed neural networks: a deep learning framework for solving forward and inverse problems involving nonlinear partial differential equations.
+QIT-CEMC Consortium (2025) `QIT-CEMC: a full-life coated end-milling cutter wear dataset', \emph{Scientific Data}, 12, pp.~1--12.
 
-\bibitem{rul-uncertainty}
-Sankararaman, S. and Goebel, K. Remaining useful life uncertainty and prognostic decision support literature in PHM.
+Raissi, M., Perdikaris, P.\ and Karniadakis, G.E.\ (2019) `Physics-informed neural networks: a deep learning framework for solving forward and inverse problems involving nonlinear partial differential equations', \emph{Journal of Computational Physics}, 378, pp.~686--707.
 
-\bibitem{gp-rul}
-Gaussian-process remaining-useful-life modeling literature in PHM and degradation forecasting.
+Sankararaman, S.\ and Goebel, K.\ (2015) `Why is the remaining useful life prediction uncertain?', in \emph{Proceedings of the Annual Conference of the Prognostics and Health Management Society}, San Diego, CA, pp.~337--349.
 
-\bibitem{physics-gp}
-Physics-informed Gaussian-process tool-wear modeling literature, including recent machining-monitoring work.
+Sun, H., Zhang, J., Mo, R.\ and Zhang, X.\ (2023) `In-process tool condition forecasting based on a deep learning method', \emph{Sensors}, 23(7), 3527.
 
-\bibitem{vmd}
-Dragomiretskiy, K. and Zosso, D. Variational mode decomposition. IEEE Transactions on Signal Processing.
+UniWear / NUAA Consortium (n.d.) \emph{UniWear orthogonal milling wear records}. Nanjing University of Aeronautics and Astronautics. Local dataset documentation.
 
-\end{thebibliography}
+Wang, J., Xie, J., Zhao, R., Zhang, L.\ and Duan, L.\ (2017) `Multisensory fusion based virtual tool wear sensing for ubiquitous manufacturing', \emph{Robotics and Computer-Integrated Manufacturing}, 45, pp.~47--58.
+
+Zhao, R., Yan, R., Chen, Z., Mao, K., Wang, P.\ and Gao, R.X.\ (2019) `Deep learning and its applications to machine health monitoring', \emph{Mechanical Systems and Signal Processing}, 115, pp.~213--237.
+
+\endgroup
 
 \end{document}
